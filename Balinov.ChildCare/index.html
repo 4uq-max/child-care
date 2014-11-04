@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ChildCare</title>
+
+    <link href="./Content/Styles/ol.css" rel="stylesheet" type="text/css" />
+    <link href="./Content/Styles/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="./Content/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./Content/Styles/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <link href="./Content/Styles/styles.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/libs/require.js"
+        data-main="Scripts/app-config"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="row hidden-xs">
+            <div><a href="#Home"><img src="Content/Images/logo.png" alt="logo" /></a></div>
+            <div><a href="#Home">ChildCare</a></div>
+        </header>
+        <nav class="row navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand visible-xs-block">
+                    <a href="#Home"><img src="Content/Images/logo-white.png" alt="logo" style="max-width: 36px;" /></a>
+                    <a href="#Home">ChildCare</a>
+                </div>
+            </div>
+            <div class="navbar-collapse navbar-responsive-collapse collapse" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li data-bind="visible: IsAuthenticated()"><a href="#Home">Начало</a></li>
+                    <li data-bind="visible: !IsAuthenticated()"><a href="#Account/Login">Вход</a></li>
+                    <li data-bind="visible: !IsAuthenticated()"><a href="#Account/Register">Регистрация</a></li>
+                    <li data-bind="visible: IsAuthenticated()"><a href="#Account/LogOff">Изход</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="row">
+        </main>
+        <footer class="row">
+            <p>&copy; 2014 - ChildCare Balinov.net</p>
+        </footer>
+    </div>
+ </body>
+</html>

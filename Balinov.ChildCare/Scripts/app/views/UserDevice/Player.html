@@ -1,0 +1,16 @@
+﻿<div id="player">
+    <div id="player-map"></div>
+    <div id="player-back">
+        <a class="icon icon-back dark" data-bind="click: $root.list"></a>
+    </div>
+    <div id="player-info">
+        <div>Дейност: <span data-bind="text: CurrentActivity"></span> (<span data-bind="text: CurrentActivityConfidence"></span>%)</div>
+    </div>
+    <div id="player-toolbar">
+        <a class="icon icon-pause dark" data-bind="click: $root.play, css: { 'icon-play': $root.Paused }"></a>
+        <a class="icon icon-stop dark" data-bind="click: $root.stop"></a>
+        <span class="player-time-label" data-bind="text: CurrentTimeText"></span>
+        <span id="progress-bar"></span>
+        <span class="player-time-label" data-bind="text: EndTimeText"></span>
+    </div>
+</div>

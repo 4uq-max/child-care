@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E3A5667-4AEB-4B7A-A2DF-A26A82FBBD4F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Balinov.ChildCare</RootNamespace>
+    <AssemblyName>Balinov.ChildCare</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\icons\dark\add.png" />
+    <Content Include="Content\Images\icons\dark\back.png" />
+    <Content Include="Content\Images\icons\dark\delete.png" />
+    <Content Include="Content\Images\icons\dark\draw.png" />
+    <Content Include="Content\Images\icons\dark\edit.png" />
+    <Content Include="Content\Images\icons\dark\eye-close.png" />
+    <Content Include="Content\Images\icons\dark\eye-open.png" />
+    <Content Include="Content\Images\icons\light\add.png" />
+    <Content Include="Content\Images\icons\light\delete.png" />
+    <Content Include="Content\Images\icons\light\edit.png" />
+    <Content Include="Content\Images\login-image.jpg" />
+    <Content Include="Content\Images\logo-white.png" />
+    <Content Include="Content\Images\marker.png" />
+    <Content Include="Content\Styles\bootstrap-theme.css" />
+    <Content Include="Content\Styles\bootstrap.min.css" />
+    <Content Include="Content\Styles\images\animated-overlay.gif" />
+    <Content Include="Content\Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Styles\images\ui-bg_flat_0_fef1ec_40x100.png" />
+    <Content Include="Content\Styles\images\ui-bg_flat_0_ffffff_40x100.png" />
+    <Content Include="Content\Styles\images\ui-bg_flat_100_68217a_40x100.png" />
+    <Content Include="Content\Styles\images\ui-bg_flat_55_68217a_40x100.png" />
+    <Content Include="Content\Styles\images\ui-bg_flat_65_ffffff_40x100.png" />
+    <Content Include="Content\Styles\images\ui-bg_flat_75_EDE2FF_40x100.png" />
+    <Content Include="Content\Styles\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\Styles\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Styles\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Styles\jquery-ui.min.css" />
+    <Content Include="Content\Styles\ol.css" />
+    <Content Include="Scripts\app\views\Alarm\Edit.html" />
+    <Content Include="Scripts\app\views\Alarm\List.html" />
+    <Content Include="Scripts\app\views\Notification\List.html" />
+    <Content Include="Scripts\app\views\UserDevice\History.html" />
+    <Content Include="Scripts\app\views\UserDevice\Edit.html" />
+    <Content Include="Scripts\app\views\UserDevice\List.html" />
+    <Content Include="Scripts\app\views\GeofenceGroup\Edit.html" />
+    <Content Include="Scripts\app\views\GeofenceGroup\List.html" />
+    <Content Include="Scripts\app\views\Geofence\Edit.html" />
+    <Content Include="Scripts\app\views\Geofence\List.html" />
+    <Content Include="Scripts\app\views\Home.html" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Scripts\app-config.js" />
+    <Content Include="Scripts\app\views\UserDevice\Player.html" />
+    <Content Include="Scripts\libs\bootstrap.min.js" />
+    <Content Include="Scripts\libs\jquery-ui.min.js" />
+    <Content Include="Scripts\libs\jquery.blockUI.js" />
+    <Content Include="Scripts\libs\knockout-3.1.0.js" />
+    <Content Include="Scripts\libs\ol-whitespace.js" />
+    <Content Include="Scripts\libs\ol.js" />
+    <Content Include="Scripts\libs\ol1.js" />
+    <Content Include="Scripts\libs\require.js" />
+    <Content Include="Scripts\libs\routie.min.js" />
+    <Content Include="Content\Styles\styles.css" />
+    <Content Include="Scripts\app\views\Account\Login.html" />
+    <Content Include="Scripts\app\views\Account\Register.html" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\libs\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\libs\q.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\DataAnnotations.bg-BG.Designer.cs">
+      <DependentUpon>DataAnnotations.bg-BG.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\DataAnnotations.designer.cs">
+      <DependentUpon>DataAnnotations.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\DisplayResources.bg-BG.designer.cs">
+      <DependentUpon>DisplayResources.bg-BG.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\DisplayResources.Designer.cs">
+      <DependentUpon>DisplayResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MembershipResources.bg-BG.Designer.cs">
+      <DependentUpon>MembershipResources.bg-BG.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MembershipResources.Designer.cs">
+      <DependentUpon>MembershipResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\UnityDependencyResolver.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\AlarmController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
+    <Compile Include="Controllers\GeofenceController.cs" />
+    <Compile Include="Controllers\GeofenceGroupController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
+    <Compile Include="Controllers\UserDeviceController.cs" />
+    <Compile Include="Core\Spatial\DbGeographyUtils.cs" />
+    <Compile Include="ExtensionMethods\GeoJSONExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserDeviceModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Content\Static\ChildCare.zip" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\SEGOEUIL.eot" />
+    <Content Include="Content\fonts\SEGOEUIL.ttf" />
+    <Content Include="Content\fonts\SEGOEUIL.woff" />
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\maps\IMap.ts">
+      <Generator>MSBuild:TypeScriptCompile</Generator>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\app\maps\OpenLayersMap.ts">
+      <Generator>MSBuild:TypeScriptCompile</Generator>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\app\system\dialog.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmsListViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceGroupsListViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\system\router.ts" />
+    <TypeScriptCompile Include="Scripts\app\system\utils.ts" />
+    <TypeScriptCompile Include="Scripts\app\system\view.ts" />
+    <TypeScriptCompile Include="Scripts\app\system\viewcache.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\AccountViewModel.ts">
+      <Generator>MSBuild:TypeScriptCompile</Generator>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\app\app.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceGroupViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofencesListViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\LoginViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\NotificationsListViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\RegisterViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceHistoryViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\UserDevicesListViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\libs\httprequest.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\jquery.blockUI.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\jqueryui.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\ol.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\require.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\routie.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\knockout.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\Q.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Balinov.ChildCare.Data\Balinov.ChildCare.Data.csproj">
+      <Project>{9f8bb998-2eea-434a-9f14-c922ce542327}</Project>
+      <Name>Balinov.ChildCare.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\DataAnnotations.bg-BG.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataAnnotations.bg-BG.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\DataAnnotations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataAnnotations.designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\DisplayResources.bg-BG.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayResources.bg-BG.designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\DisplayResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\MembershipResources.bg-BG.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MembershipResources.bg-BG.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\MembershipResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MembershipResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4040</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4040/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

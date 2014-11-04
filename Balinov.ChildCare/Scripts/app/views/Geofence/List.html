@@ -1,0 +1,12 @@
+﻿<h1>Зони</h1>
+<a class="btn btn-default" data-bind="click: $root.create">Добави</a>
+<div class="list-container">
+    <div class="list" data-bind="foreach: geofences">
+        <div class="list-item">
+            <a class="icon icon-eye-close dark" data-bind="click: $root.toggle, css: { 'icon-eye-open': $data.Visible }"></a>
+            <a class="icon icon-edit dark" data-bind="click: $root.edit"></a>
+            <a class="icon icon-delete dark" data-bind="click: $root.remove"></a>
+            <span data-bind="text: $data.Name"></span>
+        </div>
+    </div>
+</div>

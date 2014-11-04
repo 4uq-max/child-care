@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Balinov.ChildCare.Models.Activity">
+    <Position X="3.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.Alarm">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAgAAAAAAIAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Alarm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.BaseItem">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.Device">
+    <Position X="12" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAQAAAAAAAAAAAAwAAAAAAQAAAAAAAAgCAgAAIAAAAA=</HashCode>
+      <FileName>Models\Device.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.DataContext">
+    <Position X="17.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAECAAAgCgAAAgAAAAAAAAUAIAAAAgAABAAIAAAAA=</HashCode>
+      <FileName>Models\DataContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.DeviceInGeofence">
+    <Position X="16" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAgAAAAAAIIAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\DeviceInGeofence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.Geofence">
+    <Position X="7.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAEAAAAAIAAABAAAAwAAAAAAACAAQBACAAAAAA=</HashCode>
+      <FileName>Models\Geofence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.DeviceItem">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgAAAAAAAAAAAgAAAAABEAAAAAAAAAA=</HashCode>
+      <FileName>Models\DeviceItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.GeofenceGroup">
+    <Position X="14.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAACAAAAAAAAAQAwAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GeofenceGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.Notification">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.Position">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAkEAAABACAAIgAABAAAAAAAQAAAAACAAAAA=</HashCode>
+      <FileName>Models\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.UserDevice">
+    <Position X="16" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAQAAAAgAAAAAAAAgAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Balinov.ChildCare.Models.UserProfile">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\UserProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

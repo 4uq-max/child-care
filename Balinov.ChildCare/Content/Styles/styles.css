@@ -1,0 +1,232 @@
+﻿/*68217A*/
+@font-face {
+	font-family: 'SEGOEUIL';
+	src: url('../fonts/SEGOEUIL.eot');
+	src: local('SEGOEUIL'), url('../fonts/SEGOEUIL.woff') format('woff'), url('../fonts/SEGOEUIL.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family:'Segoe UI Light', 'SEGOEUIL', Arial;
+    font-size: 14px;
+    color: #444444;
+}
+
+a {
+    color: #68217A;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #444444;
+}
+
+header {
+    margin: 10px auto;
+}
+
+header div {
+    font-size: 2.4em;
+    display: inline-block;
+    vertical-align: top;
+}
+
+main {
+    padding: 0 10px;
+    min-height: 300px;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8em;
+    border-top: 1px solid #CCCCCC;
+    padding-top: 30px;
+    margin-top: 10px;
+}
+
+.ol-attribution, .ol-logo {
+    display: none;
+}
+
+.errors {
+    background-color: #F8EEFF;
+    padding: 5px;
+    width: 95%;
+}
+
+.errors ul {
+    margin-left: 12px;
+    list-style-type: none;
+}
+.errors ul li:before
+{
+    content:"⚫";
+    color: #68217A;
+    padding-right: 10px;
+}
+
+.nav-col ul {
+    list-style-type: none;
+}
+
+a.icon {
+    cursor: pointer;
+    font-size: 16px;
+}
+.icon {
+    width: 24px;
+    padding: 5px;
+    padding-left: 25px;
+    margin: 3px;
+    background-repeat: no-repeat;
+}
+.icon-back.dark {
+    background-image: url('../Images/icons/dark/back.png');
+}
+.icon-add.dark {
+    background-image: url('../Images/icons/dark/add.png');
+}
+.icon-add.light {
+    background-image: url('../Images/icons/light/add.png');
+}
+.icon-edit.dark {
+    background-image: url('../Images/icons/dark/edit.png');
+}
+.icon-edit.light {
+    background-image: url('../Images/icons/light/edit.png');
+}
+.icon-delete.dark {
+    background-image: url('../Images/icons/dark/delete.png');
+}
+.icon-delete.light {
+    background-image: url('../Images/icons/light/delete.png');
+}
+.icon-draw.dark {
+    background-image: url('../Images/icons/dark/draw.png');
+}
+.icon-eye-open {
+    background-image: url('../Images/icons/dark/eye-open.png') !important;
+}
+.icon-eye-close {
+    background-image: url('../Images/icons/dark/eye-close.png');
+}
+.icon-history {
+    background-image: url('../Images/icons/dark/history.png');
+}
+.icon-play {
+    background-image: url('../Images/icons/dark/play.png')!important;
+}
+.icon-pause {
+    background-image: url('../Images/icons/dark/pause.png');
+}
+.icon-stop {
+    background-image: url('../Images/icons/dark/stop.png');
+}
+.list-item:first-child {
+    border-top: 1px solid #ccc;
+}
+.list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 12px 0;
+    margin-right: 10px;
+}
+
+#dialog {
+    cursor: default;
+    padding: 10px 0;
+    background-color: #68217A;
+    color: #ffffff;
+}
+#dialog-message, #dialog-buttons {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#dialog-message {
+    text-align: left;
+}
+#dialog-buttons {
+    text-align: right;
+}
+#dialog button {
+    margin: 5px;
+    border: 2px solid #ffffff;
+}
+
+#player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#player {
+    position: relative;
+    z-index: 1100;
+    width: 800px;
+    height: 450px;
+    background-color: #fff;
+    margin: 50px auto;
+}
+#player-map {
+    position: absolute;
+    width: 100%;
+    height: 450px;
+}
+#player-back {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+#player-info {
+    position: absolute;
+    right: 10px;
+    bottom: 60px;
+    width: 150px;
+    background-color: rgba(204, 204, 204, 0.8);
+}
+#player-toolbar {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    bottom: 0;
+    background-color: rgba(204, 204, 204, 0.8);
+    padding: 15px 0;
+}
+#progress-bar {
+    width: 550px;
+    display: inline-block;
+    border: 0;
+    background: none;
+    background-color: #969696;
+    text-align: center;
+}
+
+#progress-bar .ui-slider-handle {
+    top: 0;
+    left: 0;
+    border: 0 none;
+    width: 0.8em;
+    height: 0.8em;
+    padding: 0;
+    margin: 0;
+    background: none;
+    background-color: #000;
+    
+
+}
+.player-time-label {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+}
+
+.nav-col ul.inline-block-list li {
+    display: inline-block;
+    padding: 0 10px;
+}

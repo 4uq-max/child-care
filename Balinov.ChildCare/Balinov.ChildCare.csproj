@@ -64,7 +64,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Net.Http" />
@@ -131,6 +131,10 @@
     <Content Include="Content\Images\icons\dark\edit.png" />
     <Content Include="Content\Images\icons\dark\eye-close.png" />
     <Content Include="Content\Images\icons\dark\eye-open.png" />
+    <Content Include="Content\Images\icons\dark\history.png" />
+    <Content Include="Content\Images\icons\dark\pause.png" />
+    <Content Include="Content\Images\icons\dark\play.png" />
+    <Content Include="Content\Images\icons\dark\stop.png" />
     <Content Include="Content\Images\icons\light\add.png" />
     <Content Include="Content\Images\icons\light\delete.png" />
     <Content Include="Content\Images\icons\light\edit.png" />

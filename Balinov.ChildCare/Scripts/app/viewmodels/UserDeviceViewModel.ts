@@ -1,6 +1,5 @@
 ﻿import ko = require('knockout');
 import HttpRequest = require('libs/httprequest');
-import Utils = require('app/system/utils');
 
 declare var app;
 var apiUri = 'api/userdevice';
@@ -11,6 +10,7 @@ class UserDeviceViewModel {
     Platform = ko.observable('');
     Uuid = ko.observable('');
     platforms = ko.observableArray();
+    private errors: Array<string>;
 
     constructor() {
         if (!platforms) {
@@ -32,10 +32,7 @@ class UserDeviceViewModel {
         .then((data) => { 
             listViewModel.devices.push(data);
             listViewModel.list();
-        }, (err) => {
-            var form = $(event.currentTarget).parents('form');
-            Utils.displayErrors(form, err.responseJSON);
-        });
+        }, (errors) => { this.errors = errors; });
     }
 
     list = () => {

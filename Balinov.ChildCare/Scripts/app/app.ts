@@ -8,6 +8,8 @@ import angular = require('angular');
 import ngRoute = require('ngRoute');
 import BaseController = require('app/controllers/BaseController');
 import NotificationListController = require('app/controllers/NotificationListController');
+import GeofenceController = require('app/controllers/GeofenceController');
+import GeofenceListController = require('app/controllers/GeofenceListController');
 import GeofenceGroupController = require('app/controllers/GeofenceGroupController');
 import GeofenceGroupListController = require('app/controllers/GeofenceGroupListController');
 
@@ -17,6 +19,8 @@ ngRoute;
 var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
     .controller("BaseController", BaseController)
     .controller('NotificationListController', NotificationListController)
+    .controller('GeofenceController', GeofenceController) 
+    .controller('GeofenceListController', GeofenceListController) 
     .controller('GeofenceGroupController', GeofenceGroupController)
     .controller('GeofenceGroupListController', GeofenceGroupListController) 
     // Config routes
@@ -33,11 +37,19 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
             .when('/GeofenceGroups', {
                 templateUrl: '/scripts/app/views/GeofenceGroup/List.html',
                 controller: 'GeofenceGroupListController'
+            })
+            .when('/Geofence/:id?', {
+                templateUrl: '/scripts/app/views/Geofence/Edit.html',
+                controller: 'GeofenceController'
+            })
+            .when('/Geofences', {
+                templateUrl: '/scripts/app/views/Geofence/List.html',
+                controller: 'GeofenceListController'
             });
     })
     // Services
     .factory('dataService', ['$http', '$q', ($http, $q) => new DataService($http, $q)])
-    .run(($rootScope: ng.IRootScopeService, $location: ng.ILocationService) => {
+    .run(($rootScope: ng.IRootScopeService) => {
 //        $rootScope.$on("$locationChangeStart", function (event, next, current) {
 //            console.log(next, current);
 //        });

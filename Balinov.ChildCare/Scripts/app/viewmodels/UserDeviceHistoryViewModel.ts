@@ -2,7 +2,6 @@
 import initJqueryUI = require('JqueryUI');
 import ko = require('knockout');
 import HttpRequest = require('libs/httprequest');
-import Utils = require('app/system/utils');
 import LocationPlayerViewModel = require('app/viewmodels/LocationPlayerViewModel');
 
 
@@ -11,6 +10,7 @@ var apiUri = 'api/userdevice';
 
 class UserDeviceHistoryViewModel {
     DeviceId = ko.observable(0);
+    private errors: Array<string>;
 
     constructor(item) {
         this.DeviceId(item.DeviceId);
@@ -30,9 +30,8 @@ class UserDeviceHistoryViewModel {
         .then((data) => {
             var player = new LocationPlayerViewModel(data);
             player.show();
-        }, (err) => {
-            var form = $(event.currentTarget).parents('form');
-            Utils.displayErrors(form, err.responseJSON);
+        }, (errors) => {
+            this.errors = errors;
         });
     }
 

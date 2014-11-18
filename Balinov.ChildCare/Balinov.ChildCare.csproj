@@ -276,30 +276,32 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\app.d.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\BaseController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\GeofenceController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\GeofenceGroupController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\GeofenceGroupListController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\GeofenceListController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\NotificationListController.ts" />
-    <TypeScriptCompile Include="Scripts\app\maps\IMap.ts">
+    <TypeScriptCompile Include="Scripts\app\maps\IMap.d.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\app\maps\OpenLayersMap.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\app\models\Geofence.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\GeofenceGroup.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Notification.d.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DataService.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\MapService.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
     <TypeScriptCompile Include="Scripts\app\system\dialog.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmsListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\system\router.ts" />
-    <TypeScriptCompile Include="Scripts\app\system\utils.ts" />
     <TypeScriptCompile Include="Scripts\app\system\view.ts" />
-    <TypeScriptCompile Include="Scripts\app\system\viewcache.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmsListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\AccountViewModel.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofencesListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LoginViewModel.ts" />

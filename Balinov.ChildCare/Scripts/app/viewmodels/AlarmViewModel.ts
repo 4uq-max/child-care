@@ -1,8 +1,7 @@
 ﻿import $ = require('jquery');
 import ko = require('knockout');
 import HttpRequest = require('libs/httprequest');
-import Utils = require('app/system/utils');
-import GeofencesListViewModel = require('app/viewmodels/GeofencesListViewModel');
+//import GeofencesListViewModel = require('app/viewmodels/GeofencesListViewModel');
 import UserDevicesListViewModel = require('app/viewmodels/UserDevicesListViewModel');
 
 declare var app;
@@ -14,6 +13,7 @@ class AlarmViewModel {
     DeviceId = ko.observable(0);
     geofences;
     devices;
+    private errors: Array<string>;
 
     IsEdit = ko.computed(() => {
         return this.Id() > 0;
@@ -25,9 +25,9 @@ class AlarmViewModel {
             this.GeofenceId(item.GeofenceId);
             this.DeviceId(item.DeviceId);
         }
-        var geofencesViewModel = app.getViewModel('GeofencesList');
-        if (!geofencesViewModel) geofencesViewModel = new GeofencesListViewModel();
-        this.geofences = geofencesViewModel.geofences;
+        //var geofencesViewModel = app.getViewModel('GeofencesList');
+        //if (!geofencesViewModel) geofencesViewModel = new GeofencesListViewModel();
+        //this.geofences = geofencesViewModel.geofences;
 
         var devicesViewModel = app.getViewModel('UserDevicesList');
         if (!devicesViewModel) devicesViewModel = new UserDevicesListViewModel();
@@ -52,10 +52,8 @@ class AlarmViewModel {
                     alarms.replace(oldAlarm, data);
                 });
         }
-        promise.then(() => { listViewModel.list(); }, (err) => {
-            var form = $(event.currentTarget).parents('form');
-            Utils.displayErrors(form, err.responseJSON);
-        });
+        promise.then(() => { listViewModel.list(); },
+            (errors) => { this.errors = errors; });
     }
 
     list = () => {

@@ -1,9 +1,11 @@
 ﻿import Notification = require('app/models/Notification');
+import Geofence = require('app/models/Geofence');
 import GeofenceGroup = require('app/models/GeofenceGroup');
 import Dialog = require('app/system/dialog');
 
 class DataService {
     private notifications: Array<Notification> = null;
+    private geofences: Array<Geofence> = null;
     private geofenceGroups: Array<GeofenceGroup> = null;
 
     constructor(private $http: ng.IHttpService,
@@ -74,7 +76,7 @@ class DataService {
         var difer = this.$q.defer<GeofenceGroup>();
 
         if (item.Id == 0) {
-            this.$http.post<GeofenceGroup>('api/geofencegroup/', item)
+            this.$http.post<GeofenceGroup>('api/geofencegroup', item)
                 .success((geofenceGroup) => {
                     this.geofenceGroups.push(geofenceGroup);
                     difer.resolve(geofenceGroup);
@@ -100,6 +102,39 @@ class DataService {
 
     getGeofenceGroup(id) : GeofenceGroup {
         return this.getItem(this.geofenceGroups, id);
+    }
+
+    getGeofences(): ng.IPromise<Array<Geofence>> {
+        var defer = this.$q.defer<Array<Geofence>>();
+        if (this.geofences == null) {
+            this.$http.get<Array<Geofence>>('api/geofence')
+                .success((geofences) => {
+                    this.geofences = geofences;
+                    defer.resolve(geofences);
+                })
+                .error((error) => {
+                    defer.reject(error);
+                });
+        } else {
+            defer.resolve(this.geofences);
+        }
+
+        return defer.promise;
+    }
+
+    deleteGeofence(id: number) {
+        return this.$http.delete('api/geofence/' + id)
+            .success((data: any) => {
+                if (data.Success) {
+                    this.removeItem(this.geofences, id);
+                } else {
+                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
+                }
+            });
+    }
+
+    getGeofence(id): Geofence {
+        return this.getItem(this.geofences, id);
     }
 
     // Common

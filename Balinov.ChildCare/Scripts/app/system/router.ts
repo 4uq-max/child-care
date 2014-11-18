@@ -6,7 +6,6 @@ import View = require('app/system/view');
 import HttpRequest = require('libs/httprequest');
 import LoginViewModel = require('app/viewmodels/LoginViewModel');
 import RegisterViewModel = require('app/viewmodels/RegisterViewModel');
-import GeofencesListViewModel = require('app/viewmodels/GeofencesListViewModel');
 import UserDevicesListViewModel = require('app/viewmodels/UserDevicesListViewModel');
 import AlarmsListViewModel = require('app/viewmodels/AlarmsListViewModel');
 import OpenLayersMap = require('app/maps/OpenLayersMap');
@@ -56,9 +55,6 @@ function initRoutes(router) {
 
     initAccount(router);
 
-    routie('/Geofences', () => {
-        router.getViewModel('GeofencesList', GeofencesListViewModel).list();
-    });
     routie('/UserDevices', () => {
         router.getViewModel('UserDevicesList', UserDevicesListViewModel).list();
     });

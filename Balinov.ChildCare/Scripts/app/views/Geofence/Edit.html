@@ -1,17 +1,21 @@
 ﻿<h1>
-    <a class="icon icon-back dark" data-bind="click: $root.list"></a>
-    <span data-bind="visible: !IsEdit()">Нова зона</span>
-    <span data-bind="visible: IsEdit()">Редакция на зона</span>
+    <a href="#/Geofences" class="icon icon-back dark"></a>
+    <span ng-hide="model.isEdit">Нова зона</span>
+    <span ng-show="model.isEdit">Редакция на зона</span>
 </h1>
 <form method="post" id="GeofenceForm">
     <div class ="form-group">
-        <input type="text" name="Name" placeholder="Име" data-bind="value: Name" class="form-control" />
+        <input type="text" name="Name" placeholder="Име" ng-model="model.geofence.Name" class="form-control" />
     </div>
     <div class="form-group">
-        <select name="GroupId" data-bind="value: GroupId, options: groups, optionsText: 'Name', optionsValue: 'Id', optionsCaption: 'Изберете група'" class="form-control"></select>
+        <select name="GroupId" class="form-control"
+                ng-model="model.geofence.GroupId"
+                ng-options="group.Id as group.Name for group in model.groups">
+            <option value="">Изберете група</option>
+        </select>
     </div>
-    <div class="form-group" data-bind="visible: !IsEdit()">
-     <select name="Type" data-bind="value: Type" class="form-control">
+    <div class="form-group" ng-hide="model.isEdit">
+     <select name="Type" ng-model="model.geofence.Type" ng-init="model.geofence.Type = 'None'" class="form-control">
       <option value="None">Изберете тип зона</option>
       <option value="Circle">Окръжност</option>
       <option value="Strip">Ивица</option>
@@ -19,10 +23,10 @@
      </select>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Радиус" data-bind="value: BufferRadius" class="form-control" />
+        <input type="text" placeholder="Радиус" ng-model="model.geofence.BufferRadius" class="form-control" />
     </div>
-    <div data-bind="visible: !IsEdit()" class="form-group">
-        <a href="javascript:void(0)" class="icon icon-draw dark " data-bind="click: draw">Започни изчертаване</a>
+    <div ng-hide="model.isEdit" class="form-group">
+        <a href="javascript:void(0)" class="icon icon-draw dark " ng-click="model.draw()">Започни изчертаване</a>
     </div>
-    <button type="button" data-bind="click: submit" class="btn btn-default">Запази</button>
+    <button type="button" ng-click="model.submit()" class="btn btn-default">Запази</button>
 </form>

@@ -158,6 +158,7 @@
     <Content Include="Content\Styles\ol.css" />
     <Content Include="Scripts\app\views\Alarm\Edit.html" />
     <Content Include="Scripts\app\views\Alarm\List.html" />
+    <Content Include="Scripts\app\views\Error.html" />
     <Content Include="Scripts\app\views\Notification\List.html" />
     <Content Include="Scripts\app\views\UserDevice\History.html" />
     <Content Include="Scripts\app\views\UserDevice\Edit.html" />
@@ -170,6 +171,9 @@
     <Content Include="Content\Images\logo.png" />
     <Content Include="Scripts\app-config.js" />
     <Content Include="Scripts\app\views\UserDevice\Player.html" />
+    <Content Include="Scripts\libs\angular\angular-route.min.js" />
+    <Content Include="Scripts\libs\angular\angular.min.js" />
+    <Content Include="Scripts\libs\angular\version.txt" />
     <Content Include="Scripts\libs\bootstrap.min.js" />
     <Content Include="Scripts\libs\jquery-ui.min.js" />
     <Content Include="Scripts\libs\jquery.blockUI.js" />
@@ -254,6 +258,10 @@
     <Content Include="Content\fonts\SEGOEUIL.ttf" />
     <Content Include="Content\fonts\SEGOEUIL.woff" />
     <None Include="Properties\PublishProfiles\Dev.pubxml" />
+    <Content Include="Scripts\libs\angular\angular.min.js.map" />
+    <Content Include="Scripts\libs\angular\angular-route.min.js.map" />
+    <Content Include="Scripts\libs\angular\errors.json" />
+    <Content Include="Scripts\libs\angular\version.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -263,17 +271,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\directives\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\app.d.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\BaseController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\GeofenceGroupController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\GeofenceGroupListController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\NotificationListController.ts" />
     <TypeScriptCompile Include="Scripts\app\maps\IMap.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\app\maps\OpenLayersMap.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\app\models\GeofenceGroup.d.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Notification.d.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\DataService.ts" />
     <TypeScriptCompile Include="Scripts\app\system\dialog.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmsListViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceGroupsListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\system\router.ts" />
     <TypeScriptCompile Include="Scripts\app\system\utils.ts" />
     <TypeScriptCompile Include="Scripts\app\system\view.ts" />
@@ -283,17 +299,17 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\AlarmViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceGroupViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofencesListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LoginViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\NotificationsListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\RegisterViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceHistoryViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDevicesListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\libs\httprequest.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.blockUI.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jqueryui.d.ts" />

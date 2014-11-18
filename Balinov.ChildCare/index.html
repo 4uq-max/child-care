@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>ChildCare</title>
-
     <link href="./Content/Styles/ol.css" rel="stylesheet" type="text/css" />
     <link href="./Content/Styles/jquery-ui.min.css" rel="stylesheet" type="text/css" />
     <link href="./Content/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -12,7 +11,7 @@
     <script src="Scripts/libs/require.js"
         data-main="Scripts/app-config"></script>
 </head>
-<body>
+<body ng-app="ChildCare" ng-cloak>
     <div class="container">
         <header class="row hidden-xs">
             <div><a href="#Home"><img src="Content/Images/logo.png" alt="logo" /></a></div>
@@ -38,12 +37,13 @@
                     <li data-bind="visible: IsAuthenticated()"><a href="#Account/LogOff">Изход</a></li>
                 </ul>
             </div>
+            
         </nav>
-        <main class="row">
+        <main class="row" ng-include src="'./Scripts/app/views/Home.html'">
         </main>
         <footer class="row">
             <p>&copy; 2014 - ChildCare Balinov.net</p>
         </footer>
     </div>
- </body>
+</body>
 </html>

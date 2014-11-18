@@ -6,11 +6,9 @@ import View = require('app/system/view');
 import HttpRequest = require('libs/httprequest');
 import LoginViewModel = require('app/viewmodels/LoginViewModel');
 import RegisterViewModel = require('app/viewmodels/RegisterViewModel');
-import GeofenceGroupsListViewModel = require('app/viewmodels/GeofenceGroupsListViewModel');
 import GeofencesListViewModel = require('app/viewmodels/GeofencesListViewModel');
 import UserDevicesListViewModel = require('app/viewmodels/UserDevicesListViewModel');
 import AlarmsListViewModel = require('app/viewmodels/AlarmsListViewModel');
-import NotificationsListViewModel = require('app/viewmodels/NotificationsListViewModel');
 import OpenLayersMap = require('app/maps/OpenLayersMap');
 
 class Router {
@@ -44,9 +42,9 @@ export = Router;
 
 
 function initRoutes(router) {
-    routie('Home', () => {
+    routie('/Home', () => {
         if (!router.app.getViewModel('Account').IsAuthenticated()) {
-            router.route('Account/Login');
+            router.route('/Account/Login');
             return;
         }
         
@@ -55,28 +53,22 @@ function initRoutes(router) {
             router.app.setMap(map);
         });
     });
+
     initAccount(router);
 
-    routie('GeofenceGroups', () => {
-        router.getViewModel('GeofenceGroupsList', GeofenceGroupsListViewModel).list();
-    });
-    routie('Geofences', () => {
+    routie('/Geofences', () => {
         router.getViewModel('GeofencesList', GeofencesListViewModel).list();
     });
-    routie('UserDevices', () => {
+    routie('/UserDevices', () => {
         router.getViewModel('UserDevicesList', UserDevicesListViewModel).list();
     });
-    routie('Alarms', () => {
+    routie('/Alarms', () => {
         router.getViewModel('AlarmsList', AlarmsListViewModel).list();
-    });
-
-    routie('Notifications', () => {
-        router.getViewModel('NotificationsList', NotificationsListViewModel).list();
     });
 }
 
 function initAccount(router) {
-    routie('Account/Login', () => {
+    routie('/Account/Login', () => {
         var main = $("main");
         var promise = View.render(router.getRoute(), main);
         promise.done(() => {
@@ -86,7 +78,7 @@ function initAccount(router) {
         });
     });
 
-    routie('Account/LogOff', () => {
+    routie('/Account/LogOff', () => {
         var promise = HttpRequest.postJSON('api/account/logout', {});
         promise.done((isLoggedOff: boolean) => {
             if (isLoggedOff) {
@@ -96,7 +88,7 @@ function initAccount(router) {
         });
     });
 
-    routie('Account/Register', () => {
+    routie('/Account/Register', () => {
         var main = $("main");
         var promise = View.render(router.getRoute(), main);
         promise.done(() => {

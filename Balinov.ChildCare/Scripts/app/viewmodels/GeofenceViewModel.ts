@@ -2,7 +2,7 @@
 import HttpRequest = require('libs/httprequest');
 import Utils = require('app/system/utils');
 import Dialog = require('app/system/dialog');
-import GeofenceGroupsListViewModel = require('app/viewmodels/GeofenceGroupsListViewModel');
+//import GeofenceGroupsListViewModel = require('app/viewmodels/GeofenceGroupsListViewModel');
 
 declare var app;
 var apiUri = 'api/geofence';
@@ -35,8 +35,8 @@ class GeofenceViewModel {
         }
 
         var groupsViewModel = app.getViewModel('GeofenceGroupsList');
-        if (!groupsViewModel) groupsViewModel = new GeofenceGroupsListViewModel();
-        this.groups = groupsViewModel.geofenceGroups;
+        //if (!groupsViewModel) groupsViewModel = new GeofenceGroupsListViewModel();
+        //this.groups = groupsViewModel.geofenceGroups;
 
         this.Type.subscribe((oldType) => { this.oldType = oldType; }, null, 'beforeChange');
         this.typeScubsciption = this.Type.subscribe(this.onChange);

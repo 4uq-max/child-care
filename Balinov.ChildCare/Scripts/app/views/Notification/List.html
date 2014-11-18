@@ -1,9 +1,9 @@
 ﻿<h1>Известия</h1>
 <div class="list-container">
-    <div class="list" data-bind="foreach: notifications">
+    <div class="list" ng-repeat="notification in model.notifications">
         <div class="list-item">
-            <a class="icon icon-delete dark" data-bind="click: $root.remove"></a>
-            <span data-bind="text: $data.Message"></span>
+            <a class="icon icon-delete dark" ng-click="model.remove(notification)"></a>
+            <span>{{ notification.Message }}</span>
         </div>
     </div>
 </div>

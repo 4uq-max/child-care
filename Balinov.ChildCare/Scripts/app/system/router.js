@@ -1,4 +1,4 @@
-﻿define(["require", "exports", 'jquery', 'knockout', 'routie', 'app/system/view', 'libs/httprequest', 'app/viewmodels/LoginViewModel', 'app/viewmodels/RegisterViewModel', 'app/viewmodels/GeofenceGroupsListViewModel', 'app/viewmodels/GeofencesListViewModel', 'app/viewmodels/UserDevicesListViewModel', 'app/viewmodels/AlarmsListViewModel', 'app/viewmodels/NotificationsListViewModel', 'app/maps/OpenLayersMap'], function(require, exports, $, ko, initRoutie, View, HttpRequest, LoginViewModel, RegisterViewModel, GeofenceGroupsListViewModel, GeofencesListViewModel, UserDevicesListViewModel, AlarmsListViewModel, NotificationsListViewModel, OpenLayersMap) {
+﻿define(["require", "exports", 'jquery', 'knockout', 'routie', 'app/system/view', 'libs/httprequest', 'app/viewmodels/LoginViewModel', 'app/viewmodels/RegisterViewModel', 'app/viewmodels/GeofencesListViewModel', 'app/viewmodels/UserDevicesListViewModel', 'app/viewmodels/AlarmsListViewModel', 'app/maps/OpenLayersMap'], function(require, exports, $, ko, initRoutie, View, HttpRequest, LoginViewModel, RegisterViewModel, GeofencesListViewModel, UserDevicesListViewModel, AlarmsListViewModel, OpenLayersMap) {
     var Router = (function () {
         function Router(app) {
             var _this = this;
@@ -26,9 +26,9 @@
     
 
     function initRoutes(router) {
-        routie('Home', function () {
+        routie('/Home', function () {
             if (!router.app.getViewModel('Account').IsAuthenticated()) {
-                router.route('Account/Login');
+                router.route('/Account/Login');
                 return;
             }
 
@@ -37,28 +37,22 @@
                 router.app.setMap(map);
             });
         });
+
         initAccount(router);
 
-        routie('GeofenceGroups', function () {
-            router.getViewModel('GeofenceGroupsList', GeofenceGroupsListViewModel).list();
-        });
-        routie('Geofences', function () {
+        routie('/Geofences', function () {
             router.getViewModel('GeofencesList', GeofencesListViewModel).list();
         });
-        routie('UserDevices', function () {
+        routie('/UserDevices', function () {
             router.getViewModel('UserDevicesList', UserDevicesListViewModel).list();
         });
-        routie('Alarms', function () {
+        routie('/Alarms', function () {
             router.getViewModel('AlarmsList', AlarmsListViewModel).list();
-        });
-
-        routie('Notifications', function () {
-            router.getViewModel('NotificationsList', NotificationsListViewModel).list();
         });
     }
 
     function initAccount(router) {
-        routie('Account/Login', function () {
+        routie('/Account/Login', function () {
             var main = $("main");
             var promise = View.render(router.getRoute(), main);
             promise.done(function () {
@@ -68,7 +62,7 @@
             });
         });
 
-        routie('Account/LogOff', function () {
+        routie('/Account/LogOff', function () {
             var promise = HttpRequest.postJSON('api/account/logout', {});
             promise.done(function (isLoggedOff) {
                 if (isLoggedOff) {
@@ -78,7 +72,7 @@
             });
         });
 
-        routie('Account/Register', function () {
+        routie('/Account/Register', function () {
             var main = $("main");
             var promise = View.render(router.getRoute(), main);
             promise.done(function () {

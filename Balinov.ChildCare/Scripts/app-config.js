@@ -8,14 +8,14 @@
         routie: 'libs/routie.min',
         q: 'libs/q.min',
         httprequest: 'libs/httprequest',
-        ol3: 'libs/ol-whitespace'
+        ol3: 'libs/ol-whitespace',
+        'angular': 'libs/angular/angular.min',
+        'ngRoute': 'libs/angular/angular-route.min',
     },
     shim: {
+        'angular': { exports: 'angular' },
+        'ngRoute': ['angular'],
         blockUI: ['jquery'], 
-        "signalr.core": {
-            deps: ["jquery"],
-            exports: "$.connection"
-        },
         JqueryUI: {
             exports: "$",
             deps: ['jquery']

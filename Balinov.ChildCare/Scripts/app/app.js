@@ -1,4 +1,24 @@
-﻿define(["require", "exports", 'jquery', 'knockout', 'app/viewmodels/AccountViewModel', 'libs/httprequest', 'app/system/router'], function(require, exports, $, ko, AccountViewModel, HttpRequest, Router) {
+﻿define(["require", "exports", 'jquery', 'knockout', 'app/viewmodels/AccountViewModel', 'libs/httprequest', 'app/system/router', 'angular', 'ngRoute', 'app/controllers/BaseController', 'app/controllers/NotificationListController', 'app/controllers/GeofenceGroupController', 'app/controllers/GeofenceGroupListController', 'app/services/DataService'], function(require, exports, $, ko, AccountViewModel, HttpRequest, Router, angular, ngRoute, BaseController, NotificationListController, GeofenceGroupController, GeofenceGroupListController, DataService) {
+    ngRoute;
+    var childCare = angular.module('ChildCare', ['ngRoute']).controller("BaseController", BaseController).controller('NotificationListController', NotificationListController).controller('GeofenceGroupController', GeofenceGroupController).controller('GeofenceGroupListController', GeofenceGroupListController).config(function ($routeProvider) {
+        $routeProvider.when('/Notifications', {
+            templateUrl: '/scripts/app/views/Notification/List.html',
+            controller: 'NotificationListController'
+        }).when('/GeofenceGroup/:id?', {
+            templateUrl: '/scripts/app/views/GeofenceGroup/Edit.html',
+            controller: 'GeofenceGroupController'
+        }).when('/GeofenceGroups', {
+            templateUrl: '/scripts/app/views/GeofenceGroup/List.html',
+            controller: 'GeofenceGroupListController'
+        });
+    }).factory('dataService', ['$http', '$q', function ($http, $q) {
+            return new DataService($http, $q);
+        }]).run(function ($rootScope, $location) {
+        //        $rootScope.$on("$locationChangeStart", function (event, next, current) {
+        //            console.log(next, current);
+        //        });
+    });
+
     var App = (function () {
         function App() {
             var _this = this;
@@ -9,7 +29,7 @@
                     ko.applyBindings(_this.getViewModel('Account'), $('nav')[0]);
                     _this.router = new Router(_this);
                     var routeTo = data.IsAuthenticated ? (window.location.hash == '' ? '#Home' : window.location.hash) : '#Account/Login';
-                    _this.route(routeTo);
+                    //this.route(routeTo);
                 });
             };
             this.route = function (to) {

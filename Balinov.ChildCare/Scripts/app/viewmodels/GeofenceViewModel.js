@@ -1,4 +1,5 @@
-﻿define(["require", "exports", 'knockout', 'libs/httprequest', 'app/system/utils', 'app/system/dialog', 'app/viewmodels/GeofenceGroupsListViewModel'], function(require, exports, ko, HttpRequest, Utils, Dialog, GeofenceGroupsListViewModel) {
+﻿define(["require", "exports", 'knockout', 'libs/httprequest', 'app/system/utils', 'app/system/dialog'], function(require, exports, ko, HttpRequest, Utils, Dialog) {
+    
     var apiUri = 'api/geofence';
 
     var GeofenceViewModel = (function () {
@@ -94,10 +95,9 @@
             }
 
             var groupsViewModel = app.getViewModel('GeofenceGroupsList');
-            if (!groupsViewModel)
-                groupsViewModel = new GeofenceGroupsListViewModel();
-            this.groups = groupsViewModel.geofenceGroups;
 
+            //if (!groupsViewModel) groupsViewModel = new GeofenceGroupsListViewModel();
+            //this.groups = groupsViewModel.geofenceGroups;
             this.Type.subscribe(function (oldType) {
                 _this.oldType = oldType;
             }, null, 'beforeChange');

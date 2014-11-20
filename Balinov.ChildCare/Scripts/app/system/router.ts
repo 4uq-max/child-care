@@ -4,7 +4,7 @@ import ko = require('knockout');
 import initRoutie = require('routie');
 import View = require('app/system/view');
 import HttpRequest = require('libs/httprequest');
-import LoginViewModel = require('app/viewmodels/LoginViewModel');
+//import LoginViewModel = require('app/viewmodels/LoginViewModel');
 import RegisterViewModel = require('app/viewmodels/RegisterViewModel');
 import UserDevicesListViewModel = require('app/viewmodels/UserDevicesListViewModel');
 import AlarmsListViewModel = require('app/viewmodels/AlarmsListViewModel');
@@ -67,11 +67,11 @@ function initAccount(router) {
     routie('/Account/Login', () => {
         var main = $("main");
         var promise = View.render(router.getRoute(), main);
-        promise.done(() => {
-            var container = main.find('#LoginForm')[0];
-            var viewModel = new LoginViewModel();
-            ko.applyBindings(viewModel, ko.cleanNode(container));
-        });
+        //promise.done(() => {
+            //var container = main.find('#LoginForm')[0];
+            //var viewModel = new LoginViewModel();
+            //ko.applyBindings(viewModel, ko.cleanNode(container));
+        //});
     });
 
     routie('/Account/LogOff', () => {

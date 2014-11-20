@@ -1,4 +1,4 @@
-﻿<div class="row">
+﻿<div class="row" ng-controller="LoginController">
     <div class="col-sm-5 hidden-xs">
         <div style="background-color: #68217A; color: #fff; max-width: 420px; margin: 0 auto;">
             <img src="Content/Images/login-image.jpg" alt="" style="max-width: 420px; width: 100%;" />
@@ -11,18 +11,18 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">@</div>
-                    <input type="text" name="Email" placeholder="ime@example.com" data-bind="value: Email" class="form-control" />
+                    <input type="text" name="Email" placeholder="ime@example.com" ng-model="model.login.Email" class="form-control" />
                 </div>
             </div>
-            <input type="password" name="Password" placeholder="Парола" data-bind="value: Password" class="form-control" />
+            <input type="password" name="Password" placeholder="Парола" ng-model="model.login.Password" class="form-control" />
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="RememberMe" data-bind="checked: RememberMe" /> Искам да остана влязъл
+                    <input type="checkbox" name="RememberMe" ng-model="model.RememberMe" /> Искам да остана влязъл
                 </label>
             </div>
-            <button type="button" data-bind="click: submit" class="btn btn-default">Влизане</button>
+            <button type="button" ng-click="model.submit()" class="btn btn-default">Влизане</button>
             <p>&nbsp;</p>
-            <p>Нямате акаунт? <a href="#Account/Register">Регистрирайте се</a></p>
+            <p>Нямате акаунт? <a href="/#/Account/Register">Регистрирайте се</a></p>
         </form>
     </div>
 </div>

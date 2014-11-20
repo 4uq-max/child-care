@@ -6,8 +6,11 @@ import Router = require('app/system/router');
 import IMap = require('app/maps/IMap');
 import angular = require('angular');
 import ngRoute = require('ngRoute');
+
 import BaseController = require('app/controllers/BaseController');
+import HomeController = require('app/controllers/HomeController');
 import NotificationListController = require('app/controllers/NotificationListController');
+import LoginController = require('app/controllers/LoginController');
 import GeofenceController = require('app/controllers/GeofenceController');
 import GeofenceListController = require('app/controllers/GeofenceListController');
 import GeofenceGroupController = require('app/controllers/GeofenceGroupController');
@@ -18,7 +21,9 @@ import DataService = require('app/services/DataService');
 ngRoute;
 var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
     .controller("BaseController", BaseController)
+    .controller('HomeController', HomeController)
     .controller('NotificationListController', NotificationListController)
+    .controller('LoginController', LoginController)
     .controller('GeofenceController', GeofenceController) 
     .controller('GeofenceListController', GeofenceListController) 
     .controller('GeofenceGroupController', GeofenceGroupController)
@@ -29,6 +34,10 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
             .when('/Notifications', {
                 templateUrl: '/scripts/app/views/Notification/List.html',
                 controller: 'NotificationListController'
+            })
+            .when('/Account/Login', {
+                templateUrl: '/scripts/app/views/Account/Login.html',
+                controller: 'LoginController'
             })
             .when('/GeofenceGroup/:id?', {
                 templateUrl: '/scripts/app/views/GeofenceGroup/Edit.html',
@@ -49,11 +58,7 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
     })
     // Services
     .factory('dataService', ['$http', '$q', ($http, $q) => new DataService($http, $q)])
-    .run(($rootScope: ng.IRootScopeService) => {
-//        $rootScope.$on("$locationChangeStart", function (event, next, current) {
-//            console.log(next, current);
-//        });
-    });
+    .run(() => { });
 
 class App {
     private router;

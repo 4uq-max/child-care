@@ -12,10 +12,10 @@
         data-main="Scripts/app-config"></script>
 </head>
 <body ng-app="ChildCare" ng-cloak>
-    <div class="container">
+    <div class="container" ng-controller="HomeController">
         <header class="row hidden-xs">
-            <div><a href="#Home"><img src="Content/Images/logo.png" alt="logo" /></a></div>
-            <div><a href="#Home">ChildCare</a></div>
+            <div><a href="/#/Home"><img src="Content/Images/logo.png" alt="logo" /></a></div>
+            <div><a href="/#/Home">ChildCare</a></div>
         </header>
         <nav class="row navbar navbar-default" role="navigation">
             <div class="navbar-header">
@@ -25,21 +25,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-brand visible-xs-block">
-                    <a href="#Home"><img src="Content/Images/logo-white.png" alt="logo" style="max-width: 36px;" /></a>
-                    <a href="#Home">ChildCare</a>
+                    <a href="/#/Home"><img src="Content/Images/logo-white.png" alt="logo" style="max-width: 36px;" /></a>
+                    <a href="/#/Home">ChildCare</a>
                 </div>
             </div>
             <div class="navbar-collapse navbar-responsive-collapse collapse" style="height: 1px;">
                 <ul class="nav navbar-nav">
-                    <li data-bind="visible: IsAuthenticated()"><a href="#Home">Начало</a></li>
-                    <li data-bind="visible: !IsAuthenticated()"><a href="#Account/Login">Вход</a></li>
-                    <li data-bind="visible: !IsAuthenticated()"><a href="#Account/Register">Регистрация</a></li>
-                    <li data-bind="visible: IsAuthenticated()"><a href="#Account/LogOff">Изход</a></li>
+                    <li ng-show="model.isAuthenticated"><a href="/#/Home">Начало</a></li>
+                    <li ng-hide="model.isAuthenticated"><a href="/#/Account/Login">Вход</a></li>
+                    <li ng-hide="model.isAuthenticated"><a href="/#/Account/Register">Регистрация</a></li>
+                    <li ng-show="model.isAuthenticated"><a href="/#/Account/LogOff">Изход</a></li>
                 </ul>
             </div>
-            
         </nav>
-        <main class="row" ng-include src="'./Scripts/app/views/Home.html'">
+        <main class="row"
+               ng-include="model.isAuthenticated? './Scripts/app/views/Home.html' : './Scripts/app/views/Account/Login.html'">
         </main>
         <footer class="row">
             <p>&copy; 2014 - ChildCare Balinov.net</p>

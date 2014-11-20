@@ -137,6 +137,16 @@ class DataService {
         return this.getItem(this.geofences, id);
     }
 
+
+    login(data) {
+        var defer = this.$q.defer();
+        
+        var promise = this.$http.post('api/account/login', data)
+            .success(() => defer.resolve())
+            .error((errors: any) => defer.reject(errors));
+        return defer.promise;
+    }
+
     // Common
     private getItem(array: Array<{ Id: any }>, id) : any {
         for (var i = 0; i < array.length; i++) {

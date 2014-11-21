@@ -16,7 +16,6 @@ class LoginController extends BaseController {
     }
 
     submit() {
-        //console.log('Drago');
         var parent: any = this.$scope.$parent;
        // this.$scope
         console.log('parent scope:', parent, parent.IsAuthenticated);

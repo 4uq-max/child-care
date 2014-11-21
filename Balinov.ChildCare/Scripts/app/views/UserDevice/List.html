@@ -1,13 +1,14 @@
 ﻿<h1>Устройства</h1>
-<a class="btn btn-default" data-bind="click: $root.create">Добави</a>
+<a href="/#/UserDevice" class="btn btn-default">Добави</a>
 <div class="list-container">
-    <div class="list" data-bind="foreach: devices">
+    <div class="list" ng-repeat="device in model.devices">
         <div class="list-item">
-            <a class="icon icon-history dark" data-bind="click: $root.history"></a>
-            <a class="icon icon-delete dark" data-bind="click: $root.remove"></a>
-            <span data-bind="text: $data.Name"></span>
-            <span data-bind="text: ($data.ApprovalStatus == 0) ? 'Изчакващ' : ($data.ApprovalStatus == 1) ? 'Потвърден' : 'Отказан'"
-                  style="font-size: 0.8em;"></span>
+            <a href="#/UserDeviceHistory/{{ device.DeviceId }}" class="icon icon-history dark"></a>
+            <a ng-click="model.remove(device)" class="icon icon-delete dark"></a>
+            <span>{{ device.Name }}</span>
+            <span style ="font-size: 0.8em;">
+                {{ (device.ApprovalStatus == 0) ? 'Изчакващ' : (device.ApprovalStatus == 1) ? 'Потвърден' : 'Отказан' }}
+            </span>
         </div>
     </div>
 </div>

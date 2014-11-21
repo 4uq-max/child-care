@@ -8,6 +8,7 @@ import angular = require('angular');
 import ngRoute = require('ngRoute');
 
 import BaseController = require('app/controllers/BaseController');
+import AlarmListController = require('app/controllers/AlarmListController');
 import HomeController = require('app/controllers/HomeController');
 import NotificationListController = require('app/controllers/NotificationListController');
 import LoginController = require('app/controllers/LoginController');
@@ -15,22 +16,29 @@ import GeofenceController = require('app/controllers/GeofenceController');
 import GeofenceListController = require('app/controllers/GeofenceListController');
 import GeofenceGroupController = require('app/controllers/GeofenceGroupController');
 import GeofenceGroupListController = require('app/controllers/GeofenceGroupListController');
+import UserDeviceListController = require('app/controllers/UserDeviceListController');
 
 import DataService = require('app/services/DataService');
 
 ngRoute;
 var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
     .controller("BaseController", BaseController)
+    .controller('AlarmListController', AlarmListController)
     .controller('HomeController', HomeController)
     .controller('NotificationListController', NotificationListController)
     .controller('LoginController', LoginController)
     .controller('GeofenceController', GeofenceController) 
     .controller('GeofenceListController', GeofenceListController) 
     .controller('GeofenceGroupController', GeofenceGroupController)
-    .controller('GeofenceGroupListController', GeofenceGroupListController) 
+    .controller('GeofenceGroupListController', GeofenceGroupListController)
+    .controller('UserDeviceListController', UserDeviceListController)
     // Config routes
     .config(($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
+            .when('/Alarm/List', {
+                templateUrl: '/scripts/app/views/Alarm/List.html',
+                controller: 'AlarmListController'
+            })
             .when('/Notifications', {
                 templateUrl: '/scripts/app/views/Notification/List.html',
                 controller: 'NotificationListController'
@@ -54,6 +62,18 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
             .when('/Geofences', {
                 templateUrl: '/scripts/app/views/Geofence/List.html',
                 controller: 'GeofenceListController'
+            })
+         
+            .when('/UserDevice', {
+                templateUrl: '/scripts/app/views/UserDevice/Edit.html'
+            })
+            .when('/UserDevices', {
+                templateUrl: '/scripts/app/views/UserDevice/List.html',
+                controller: 'UserDeviceListController'
+            })
+
+            .when('/UserDeviceHistory/:id', {
+                templateUrl: '/scripts/app/views/UserDevice/History.html'
             });
     })
     // Services

@@ -6,8 +6,6 @@ import View = require('app/system/view');
 import HttpRequest = require('libs/httprequest');
 //import LoginViewModel = require('app/viewmodels/LoginViewModel');
 import RegisterViewModel = require('app/viewmodels/RegisterViewModel');
-import UserDevicesListViewModel = require('app/viewmodels/UserDevicesListViewModel');
-import AlarmsListViewModel = require('app/viewmodels/AlarmsListViewModel');
 import OpenLayersMap = require('app/maps/OpenLayersMap');
 
 class Router {
@@ -54,13 +52,6 @@ function initRoutes(router) {
     });
 
     initAccount(router);
-
-    routie('/UserDevices', () => {
-        router.getViewModel('UserDevicesList', UserDevicesListViewModel).list();
-    });
-    routie('/Alarms', () => {
-        router.getViewModel('AlarmsList', AlarmsListViewModel).list();
-    });
 }
 
 function initAccount(router) {

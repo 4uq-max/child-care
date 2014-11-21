@@ -1,34 +1,110 @@
-﻿import Notification = require('app/models/Notification');
+﻿import Alarm = require('app/models/Alarm');
+import Device = require('app/models/Device');
+import Notification = require('app/models/Notification');
 import Geofence = require('app/models/Geofence');
 import GeofenceGroup = require('app/models/GeofenceGroup');
 import Dialog = require('app/system/dialog');
 
 class DataService {
-    private notifications: Array<Notification> = null;
-    private geofences: Array<Geofence> = null;
-    private geofenceGroups: Array<GeofenceGroup> = null;
+    private alarms: Alarm[] = null;
+    private devices: Device[] = null;
+    private notifications: Notification[] = null;
+    private geofences: Geofence[] = null;
+    private geofenceGroups: GeofenceGroup[] = null;
 
     constructor(private $http: ng.IHttpService,
         private $q: ng.IQService) {
     }
 
-    getNotifications(): ng.IPromise<any> {
-        var defer = this.$q.defer<Array<Notification>>();
-
-        if (this.notifications == null) {
-            this.$http.get<Array<Notification>>('api/notification')
-                .success((notifications) => {
-                    this.notifications = notifications;
-                    defer.resolve(notifications);
-                })
-                .error((error) => {
-                    defer.reject(error);
-                });
+    getAlarms(): ng.IPromise<any> {
+        var defer = this.$q.defer<Alarm[]>();
+        if (this.alarms == null) {
+            defer = this.getAll<Alarm>('api/alarm', defer);
+            defer.promise.then(alarms => this.alarms = alarms);
         } else {
-            defer.resolve(this.notifications);
+            defer.resolve(this.alarms);
         }
 
         return defer.promise;
+    }
+
+    getDevices(): ng.IPromise<any> {
+        var defer = this.$q.defer<Device[]>();
+        if (this.devices == null) {
+            defer = this.getAll<Device>('api/userdevice', defer);
+            defer.promise.then((devices) => this.devices = devices);
+        } else {
+            defer.resolve(this.devices);
+        }
+
+        return defer.promise;
+    }
+
+    getNotifications(): ng.IPromise<any> {
+        var defer = this.$q.defer<Notification[]>();
+        if (this.notifications == null) {
+            defer = this.getAll<Notification>('api/notification', defer);
+            defer.promise.then((notifications) => this.notifications = notifications);
+        } else {
+            defer.resolve(this.notifications);
+        }
+        return defer.promise;
+    }
+
+    getGeofenceGroups(): ng.IPromise<GeofenceGroup[]> {
+        var defer = this.$q.defer<GeofenceGroup[]>();
+        if (this.geofenceGroups == null) {
+            defer = this.getAll<GeofenceGroup>('api/geofencegroup', defer);
+            defer.promise.then((geofenceGroups) => this.geofenceGroups = geofenceGroups);
+        } else {
+            defer.resolve(this.geofenceGroups);
+        }
+        return defer.promise;
+    }
+
+    getAll<T>(url: string, defer: ng.IDeferred<T[]>) {
+        this.$http.get<T[]>(url)
+            .success((data) => defer.resolve(data))
+            .error((error) => defer.reject(error));
+        return defer;
+    }
+
+    getGeofences(): ng.IPromise<Geofence[]> {
+        var defer = this.$q.defer<Geofence[]>();
+        if (this.geofences == null) {
+            this.$http.get<Geofence[]>('api/geofence')
+                .success((geofences) => {
+                    this.geofences = geofences;
+                    defer.resolve(geofences);
+                })
+                .error(error => defer.reject(error));
+        } else {
+            defer.resolve(this.geofences);
+        }
+
+        return defer.promise;
+    }
+
+    deleteAlarm(id: number) {
+        return this.$http.delete('api/alarm/' + id)
+            .success((data: any) => {
+                if (data.Success) {
+                    this.removeItem(this.alarms, id);
+                } else {
+                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
+                }
+            });
+    }
+
+    deleteDevice(id: number) {
+        return this.$http.delete('api/userdevice/?deviceId=' + id)
+            .success((data: any) => {
+                if (data.Success) {
+                    this.removeItem(this.devices, id, item => item.DeviceId);
+                } else {
+                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
+                }
+            });
     }
 
     deleteNotification(id: number) {
@@ -40,25 +116,6 @@ class DataService {
                     Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
                 }
             });
-    }
-
-    getGeofenceGroups(): ng.IPromise<Array<GeofenceGroup>> {
-        var defer = this.$q.defer<Array<GeofenceGroup>>();
-
-        if (this.geofenceGroups == null) {
-            this.$http.get<Array<GeofenceGroup>>('api/geofencegroup')
-                .success((geofenceGroups) => {
-                    this.geofenceGroups = geofenceGroups;
-                    defer.resolve(geofenceGroups);
-                })
-                .error((error) => {
-                    defer.reject(error);
-                });
-        } else {
-            defer.resolve(this.geofenceGroups);
-        }
-
-        return defer.promise;
     }
 
     deleteGeofenceGroup(id: number) {
@@ -104,24 +161,6 @@ class DataService {
         return this.getItem(this.geofenceGroups, id);
     }
 
-    getGeofences(): ng.IPromise<Array<Geofence>> {
-        var defer = this.$q.defer<Array<Geofence>>();
-        if (this.geofences == null) {
-            this.$http.get<Array<Geofence>>('api/geofence')
-                .success((geofences) => {
-                    this.geofences = geofences;
-                    defer.resolve(geofences);
-                })
-                .error((error) => {
-                    defer.reject(error);
-                });
-        } else {
-            defer.resolve(this.geofences);
-        }
-
-        return defer.promise;
-    }
-
     deleteGeofence(id: number) {
         return this.$http.delete('api/geofence/' + id)
             .success((data: any) => {
@@ -148,7 +187,7 @@ class DataService {
     }
 
     // Common
-    private getItem(array: Array<{ Id: any }>, id) : any {
+    private getItem(array: { Id: any }[], id) : any {
         for (var i = 0; i < array.length; i++) {
             if (array[i].Id == id) {
                 return array[i];
@@ -156,10 +195,14 @@ class DataService {
         }
     }
 
-    private removeItem(array: Array<{ Id: any }>, id) {
+    private removeItem(array: any[], id, getId?) {
+        if (!getId) {
+            getId = this.getId;
+        }
+
         var index = null;
         for (var i = 0; i < array.length; i++) {
-            if (array[i].Id == id) {
+            if (getId(array[i]) == id) {
                 index = i;
             }
         }
@@ -167,6 +210,10 @@ class DataService {
         if (index !== null) {
             array.splice(index, 1);
         }
+    }
+
+    private getId(item: any) {
+        return item.Id;
     }
 }
 

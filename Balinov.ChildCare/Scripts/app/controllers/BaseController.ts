@@ -1,4 +1,4 @@
-﻿//"use strict";
+﻿'use strict';
 import IScope = require("../app.d");
 
 class BaseController {

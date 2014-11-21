@@ -2,6 +2,7 @@
     <a href="#/UserDevices" class="icon icon-back dark"></a>
     <span>Ново устройство</span>
 </h1>
+<div ng-include="model.errors.length ? './Scripts/app/views/Error.html' : null"></div>
 <form method="post" id="DeviceForm">
     <div class="form-group">
         <input type="text" name="Name" placeholder="Име" ng-model="model.Name" class="form-control" />

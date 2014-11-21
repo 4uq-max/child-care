@@ -157,6 +157,34 @@ class DataService {
         return difer.promise;
     }
 
+    saveAlarm(item: Alarm) {
+        var difer = this.$q.defer<Alarm>();
+
+        if (item.Id == 0) {
+            this.$http.post<Alarm>('api/alarm', item)
+                .success((alarm) => {
+                    this.alarms.push(alarm);
+                    difer.resolve(alarm);
+                })
+                .error((error) => difer.reject(error));
+        } else {
+            this.$http.put<Alarm>('api/alarm/' + item.Id, item)
+                .success((alarm) => {
+                    for (var i = 0; i < this.alarms.length; i++) {
+                        if (this.alarms[i].Id == item.Id) {
+                            this.alarms[i] = item;
+                            break;
+                        }
+                    }
+
+                    difer.resolve(alarm);
+                })
+                .error((error) => difer.reject(error));
+        }
+
+        return difer.promise;
+    }
+
     getGeofenceGroup(id) : GeofenceGroup {
         return this.getItem(this.geofenceGroups, id);
     }
@@ -176,6 +204,9 @@ class DataService {
         return this.getItem(this.geofences, id);
     }
 
+    getAlarm(id): Alarm {
+        return this.getItem(this.alarms, id);
+    }
 
     login(data) {
         var defer = this.$q.defer();

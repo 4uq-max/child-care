@@ -2,6 +2,7 @@
     <a href="#/UserDevices" class="icon icon-back dark"></a>
     <span>История за устройство</span>
 </h1>
+<div ng-include="model.errors.length ? './Scripts/app/views/Error.html' : null"></div>
 <form method="post" id="HistryForm">
     <div class="form-group">
         <input type="text" id="Date" name="Date" placeholder="Дата" class="form-control" />

@@ -3,6 +3,7 @@
     <span ng-hide="model.isEdit">Нова зона</span>
     <span ng-show="model.isEdit">Редакция на зона</span>
 </h1>
+<div ng-include="model.errors.length ? './Scripts/app/views/Error.html' : null"></div>
 <form method="post" id="GeofenceForm">
     <div class ="form-group">
         <input type="text" name="Name" placeholder="Име" ng-model="model.geofence.Name" class="form-control" />

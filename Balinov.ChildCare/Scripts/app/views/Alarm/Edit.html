@@ -3,11 +3,12 @@
     <span ng-hide="model.isEdit">Нова аларма</span>
     <span ng-show="model.isEdit">Редакция на аларма</span>
 </h1>
+<div ng-include="model.errors.length ? './Scripts/app/views/Error.html' : null"></div>
 <form method="post" id="AlarmForm">
     <div class="form-group">
         <select name="DeviceId" class="form-control"
                 ng-model="model.alarm.DeviceId"
-                ng-options="device.Id as device.Name for device in model.devices">
+                ng-options="device.DeviceId as device.Name for device in model.devices">
             <option value="">Изберете устройство</option>
         </select>
     </div>

@@ -9,6 +9,7 @@ import ngRoute = require('ngRoute');
 
 import BaseController = require('app/controllers/BaseController');
 import AlarmListController = require('app/controllers/AlarmListController');
+import AlarmController = require('app/controllers/AlarmController');
 import HomeController = require('app/controllers/HomeController');
 import NotificationListController = require('app/controllers/NotificationListController');
 import LoginController = require('app/controllers/LoginController');
@@ -22,7 +23,8 @@ import DataService = require('app/services/DataService');
 
 ngRoute;
 var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
-    .controller("BaseController", BaseController)
+    .controller('BaseController', BaseController)
+    .controller('AlarmController', AlarmController)
     .controller('AlarmListController', AlarmListController)
     .controller('HomeController', HomeController)
     .controller('NotificationListController', NotificationListController)
@@ -38,6 +40,10 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
             .when('/Alarm/List', {
                 templateUrl: '/scripts/app/views/Alarm/List.html',
                 controller: 'AlarmListController'
+            })
+            .when('/Alarm/Edit/:id?', {
+                templateUrl: '/scripts/app/views/Alarm/Edit.html',
+                controller: 'AlarmController'
             })
             .when('/Notifications', {
                 templateUrl: '/scripts/app/views/Notification/List.html',
@@ -63,7 +69,6 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
                 templateUrl: '/scripts/app/views/Geofence/List.html',
                 controller: 'GeofenceListController'
             })
-         
             .when('/UserDevice', {
                 templateUrl: '/scripts/app/views/UserDevice/Edit.html'
             })
@@ -71,7 +76,6 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
                 templateUrl: '/scripts/app/views/UserDevice/List.html',
                 controller: 'UserDeviceListController'
             })
-
             .when('/UserDeviceHistory/:id', {
                 templateUrl: '/scripts/app/views/UserDevice/History.html'
             });

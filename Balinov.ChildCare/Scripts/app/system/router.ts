@@ -51,17 +51,13 @@ function initRoutes(router) {
         });
     });
 
-    initAccount(router);
-}
-
-function initAccount(router) {
     routie('/Account/Login', () => {
         var main = $("main");
         var promise = View.render(router.getRoute(), main);
         //promise.done(() => {
-            //var container = main.find('#LoginForm')[0];
-            //var viewModel = new LoginViewModel();
-            //ko.applyBindings(viewModel, ko.cleanNode(container));
+        //var container = main.find('#LoginForm')[0];
+        //var viewModel = new LoginViewModel();
+        //ko.applyBindings(viewModel, ko.cleanNode(container));
         //});
     });
 

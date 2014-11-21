@@ -16,11 +16,11 @@ class LocationPlayerViewModel {
     private interval;
     private feature;
 
-    Paused = ko.observable(true);
-    CurrentActivity = ko.observable('Неизвестно');
-    CurrentActivityConfidence = ko.observable(0);
-    CurrentTimeText = ko.observable('00:00:00');
-    EndTimeText = ko.observable('00:00:00');
+    Paused = true;
+    CurrentActivity = 'Неизвестно';
+    CurrentActivityConfidence = 0;
+    CurrentTimeText = '00:00:00';
+    EndTimeText = '00:00:00';
 
     constructor(data) {
         this.data = data;
@@ -49,7 +49,7 @@ class LocationPlayerViewModel {
                 change: this.onSliderChange
             });
             this.CurrentTime(startTime);
-            this.EndTimeText(this.secondsToTime(endTime));
+            this.EndTimeText = this.secondsToTime(endTime);
             // Focus map;
             var transformFn = ol.proj.getTransform('EPSG:4326', 'EPSG:3857');
             var extent = ol.extent.transform(this.data.Extent, transformFn);
@@ -64,7 +64,7 @@ class LocationPlayerViewModel {
 
     list = () => {
         this.map.removeFeature(this.feature);
-        if (!this.Paused()) {
+        if (!this.Paused) {
             this.pause();
         }
         $.unblockUI();
@@ -74,17 +74,17 @@ class LocationPlayerViewModel {
     }
 
     play = () => {
-        if (this.Paused()) {
+        if (this.Paused) {
             this.resume();
         } else {
             this.pause();
         }
-        this.Paused(!this.Paused());
+        this.Paused = !this.Paused;
     }
 
     stop = () => {
         this.pause();
-        this.Paused(true);
+        this.Paused = true;
         this.CurrentTime(this.getMinTime());
         this.slider.slider('value', 0);
     }
@@ -95,13 +95,13 @@ class LocationPlayerViewModel {
             this.stop();
         }
         this.CurrentTime(this.getMinTime() + ui.value * this.timestep);
-        this.CurrentTimeText(this.secondsToTime(this.CurrentTime()));
+        this.CurrentTimeText = this.secondsToTime(this.CurrentTime());
 
         var closestActivityIndex = this.findClosestFeedIndex(this.CurrentTime(), this.data.Activities);
         var currentActivity = this.data.Activities[closestActivityIndex];
         if (currentActivity) {
-            this.CurrentActivity(this.getTypeName(currentActivity.Type));
-            this.CurrentActivityConfidence(currentActivity.Confidence);
+            this.CurrentActivity = this.getTypeName(currentActivity.Type);
+            this.CurrentActivityConfidence = currentActivity.Confidence;
         }
 
         var computedPosition = this.getComputedPosition();
@@ -142,7 +142,7 @@ class LocationPlayerViewModel {
             Latitude: 0,
             Longitude: 0,
             TimeStamp: 0
-        }
+        };
         var deltaTime = nextFeed.TimeStamp - currentFeed.TimeStamp;
         var deltaTime1 = time - currentFeed.TimeStamp;
         var deltaTime2 = nextFeed.TimeStamp - time;

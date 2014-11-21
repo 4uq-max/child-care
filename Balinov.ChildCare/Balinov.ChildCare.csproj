@@ -309,10 +309,8 @@
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\LoginViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\RegisterViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceHistoryViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\UserDevicesListViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\libs\httprequest.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular-route.d.ts" />

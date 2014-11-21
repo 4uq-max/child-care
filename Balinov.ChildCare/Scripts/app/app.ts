@@ -69,14 +69,14 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
                 templateUrl: '/scripts/app/views/Geofence/List.html',
                 controller: 'GeofenceListController'
             })
-            .when('/UserDevice', {
+            .when('/UserDevice/Edit', {
                 templateUrl: '/scripts/app/views/UserDevice/Edit.html'
             })
-            .when('/UserDevices', {
+            .when('/UserDevice/List', {
                 templateUrl: '/scripts/app/views/UserDevice/List.html',
                 controller: 'UserDeviceListController'
             })
-            .when('/UserDeviceHistory/:id', {
+            .when('/UserDevice/History/:id', {
                 templateUrl: '/scripts/app/views/UserDevice/History.html'
             });
     })

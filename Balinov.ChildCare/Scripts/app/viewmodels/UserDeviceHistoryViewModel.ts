@@ -4,16 +4,15 @@ import ko = require('knockout');
 import HttpRequest = require('libs/httprequest');
 import LocationPlayerViewModel = require('app/viewmodels/LocationPlayerViewModel');
 
-
 declare var app;
 var apiUri = 'api/userdevice';
 
 class UserDeviceHistoryViewModel {
-    DeviceId = ko.observable(0);
+    DeviceId = 0;
     private errors: Array<string>;
 
     constructor(item) {
-        this.DeviceId(item.DeviceId);
+        this.DeviceId = item.DeviceId;
         initJqueryUI;
         $('#Date').val($.datepicker.formatDate('dd.mm.yy', new Date()));
     }
@@ -30,13 +29,7 @@ class UserDeviceHistoryViewModel {
         .then((data) => {
             var player = new LocationPlayerViewModel(data);
             player.show();
-        }, (errors) => {
-            this.errors = errors;
-        });
-    }
-
-    list = () => {
-        app.getViewModel('UserDevicesList').list();
+        }, errors => this.errors = errors);
     }
 }
 

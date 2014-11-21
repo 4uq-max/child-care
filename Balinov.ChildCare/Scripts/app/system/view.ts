@@ -1,5 +1,4 @@
-﻿import Q = require('q');
-import HttpRequest = require('libs/httprequest');
+﻿import HttpRequest = require('libs/httprequest');
 import OpenLayersMap = require('app/maps/OpenLayersMap');
 
 declare var app;

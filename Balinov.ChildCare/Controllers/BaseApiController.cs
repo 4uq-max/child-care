@@ -21,7 +21,8 @@
                 if (this.currentUser == null)
                 {
                     this.currentUser = this.UserRepository.GetAll()
-                        .FirstOrDefault(item => item.Email == User.Identity.Name);
+                        ///////////////////TODO:
+                        .FirstOrDefault(item => item.Email == "dnbalinov@gmail.com");// User.Identity.Name);
                 }
 
                 return this.currentUser;

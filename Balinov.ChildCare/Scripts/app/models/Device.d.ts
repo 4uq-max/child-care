@@ -4,7 +4,6 @@
 
     //ApprovalStatus: 1
     //UserId: 3
-
     //Platform: string;
     //Uuid: string;
 }

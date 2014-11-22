@@ -4,7 +4,7 @@
 //import Router = require('app/system/router');
 //import IMap = require('app/maps/IMap');
 
-var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar'/*, 'ngCookies'*/])
+var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar', 'ngAnimate'/*, 'ngCookies'*/])
     .controller('BaseController', App.Controllers.BaseController)
     .controller('AlarmController', App.Controllers.AlarmController)
     .controller('AlarmListController', App.Controllers.AlarmListController)

@@ -289,6 +289,7 @@
     <TypeScriptCompile Include="Scripts\app\controllers\LoginController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\NotificationListController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\RegisterController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceHistoryController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceListController.ts" />
     <TypeScriptCompile Include="Scripts\app\maps\IMap.d.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
@@ -300,10 +301,12 @@
     <TypeScriptCompile Include="Scripts\app\models\Device.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Geofence.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\GeofenceGroup.d.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\History.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Login.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Notification.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Register.d.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DataService.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\GpsPlayerService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MapService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
     <TypeScriptCompile Include="Scripts\app\system\router.ts" />
@@ -314,7 +317,6 @@
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceHistoryViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\libs\httprequest.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular-route.d.ts" />

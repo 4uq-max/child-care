@@ -176,6 +176,15 @@ module App.Services {
             return difer.promise;
         }
 
+        getHistory(id, timestamp) {
+            var url = 'api/userdevice/' + id + '?timestamp=' + timestamp;
+            var defer = this.$q.defer<any>();
+            this.$http.get(url)
+                .success(data => defer.resolve(data))
+                .error(error => defer.reject(error));
+            return defer.promise;
+        }
+
         saveAlarm(item: Alarm) {
             var difer = this.$q.defer<Alarm>();
 

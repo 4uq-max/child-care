@@ -17,7 +17,8 @@ var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar', '
     .controller('GeofenceGroupController', App.Controllers.GeofenceGroupController)
     .controller('GeofenceGroupListController', App.Controllers.GeofenceGroupListController)
     .controller('UserDeviceListController', App.Controllers.UserDeviceListController)
-    // Config routes
+    .controller('UserDeviceHistoryController', App.Controllers.UserDeviceHistoryController)
+// Config routes
     .config(($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
             .when('/Alarm/List', {
@@ -64,16 +65,18 @@ var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar', '
                 controller: 'UserDeviceListController'
             })
             .when('/UserDevice/History/:id', {
-                templateUrl: '/scripts/app/views/UserDevice/History.html'
+                templateUrl: '/scripts/app/views/UserDevice/History.html',
+                controller: 'UserDeviceHistoryController'
             });
     })
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
-    // Services
+// Services
     .factory('messageService', ['$q', ($q) => new App.Services.MessageService($q)])
     .factory('dataService', ['$http', '$q', 'messageService',
         ($http, $q, messageService) => new App.Services.DataService($http, $q, messageService)])
+    .factory('gpsPlayerService', [() => new App.Services.GpsPlayerService()])
     .run(() => { });
 
 //class Appl {

@@ -192,7 +192,6 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Scripts\libs\jquery-2.1.0.min.js" />
-    <Content Include="Scripts\libs\q.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -311,9 +310,6 @@
     <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
     <TypeScriptCompile Include="Scripts\app\system\router.ts" />
     <TypeScriptCompile Include="Scripts\app\system\view.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\AccountViewModel.ts">
-      <Generator>MSBuild:TypeScriptCompile</Generator>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
@@ -324,9 +320,7 @@
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.blockUI.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jqueryui.d.ts" />
-    <TypeScriptCompile Include="Scripts\libs\typings\ol.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\knockout.d.ts" />
-    <TypeScriptCompile Include="Scripts\libs\typings\Q.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Balinov.ChildCare.Data\Balinov.ChildCare.Data.csproj">

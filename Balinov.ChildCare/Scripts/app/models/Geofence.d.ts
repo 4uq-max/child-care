@@ -6,5 +6,7 @@
         GroupId: number;
         Type: string;
         Visible: boolean;
+        Feature? ;
+        GeoJSONBuffered? ;
     }
 }

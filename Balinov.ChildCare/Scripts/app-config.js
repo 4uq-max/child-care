@@ -5,6 +5,6 @@
 
         /*q: 'libs/q.min',
         httprequest: 'libs/httprequest',
-        ol3: 'libs/ol-whitespace',*/
+        */
     //}
 //});

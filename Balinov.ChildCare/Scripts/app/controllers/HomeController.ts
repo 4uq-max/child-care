@@ -6,7 +6,8 @@ module App.Controllers {
         constructor($scope: IScope<HomeController>,
             private $location: ng.ILocationService,
             private $timeout: ng.ITimeoutService,
-            private dataService: Services.DataService) {
+            private dataService: Services.DataService,
+            private mapService: Services.MapService) {
             super($scope);
             this.isAuthenticated = false;
 
@@ -14,8 +15,11 @@ module App.Controllers {
                 .then((data) => {
                     this.isAuthenticated = data.IsAuthenticated;
                     var path = this.isAuthenticated ? '/Home' : '/Account/Login';
-                    this.$timeout(() => {
+                    $timeout(() => {
                         this.$location.path(path);
+                        if (path == '/Home') {
+                            mapService.init('map');
+                        }
                     }, 500);
                 });
         }

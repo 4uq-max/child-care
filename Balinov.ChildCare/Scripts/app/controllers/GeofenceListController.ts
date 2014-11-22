@@ -4,7 +4,8 @@ module App.Controllers {
         private geofences: Array<Geofence>;
 
         constructor($scope: IScope<GeofenceListController>,
-            private dataService: Services.DataService) {
+            private dataService: Services.DataService,
+            private mapService: Services.MapService) {
             super($scope);
 
             this.dataService.getGeofences()
@@ -21,13 +22,12 @@ module App.Controllers {
         }
 
         toggle(geofence: Geofence) {
-            //var map = app.getMap();
             if (!geofence.Visible) {
-                //    geofence.Feature = map.addFeature(geofence.GeoJSONBuffered);
+                geofence.Feature = this.mapService.addFeature(geofence.GeoJSONBuffered);
                 geofence.Visible = true;
             } else {
-                //    map.removeFeature(geofence.Feature);
-                //    delete geofence.Feature;
+                this.mapService.removeFeature(geofence.Feature);
+                delete geofence.Feature;
                 geofence.Visible = false;
             }
         }

@@ -1,23 +1,4 @@
-﻿//import $ = require('jquery');
-//import ko = require('knockout');
-//import AccountViewModel = require('app/viewmodels/AccountViewModel');
-//import Router = require('app/system/router');
-//import IMap = require('app/maps/IMap');
-
-var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar', 'ngAnimate'/*, 'ngCookies'*/])
-    .controller('BaseController', App.Controllers.BaseController)
-    .controller('AlarmController', App.Controllers.AlarmController)
-    .controller('AlarmListController', App.Controllers.AlarmListController)
-    .controller('HomeController', App.Controllers.HomeController)
-    .controller('NotificationListController', App.Controllers.NotificationListController)
-    .controller('LoginController', App.Controllers.LoginController)
-    .controller('RegisterController', App.Controllers.RegisterController)
-    .controller('GeofenceController', App.Controllers.GeofenceController)
-    .controller('GeofenceListController', App.Controllers.GeofenceListController)
-    .controller('GeofenceGroupController', App.Controllers.GeofenceGroupController)
-    .controller('GeofenceGroupListController', App.Controllers.GeofenceGroupListController)
-    .controller('UserDeviceListController', App.Controllers.UserDeviceListController)
-    .controller('UserDeviceHistoryController', App.Controllers.UserDeviceHistoryController)
+﻿var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar', 'ngAnimate'])
 // Config routes
     .config(($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
@@ -72,37 +53,24 @@ var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar', '
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
+// Controllers
+    .controller('BaseController', App.Controllers.BaseController)
+    .controller('AlarmController', App.Controllers.AlarmController)
+    .controller('AlarmListController', App.Controllers.AlarmListController)
+    .controller('HomeController', App.Controllers.HomeController)
+    .controller('NotificationListController', App.Controllers.NotificationListController)
+    .controller('LoginController', App.Controllers.LoginController)
+    .controller('RegisterController', App.Controllers.RegisterController)
+    .controller('GeofenceController', App.Controllers.GeofenceController)
+    .controller('GeofenceListController', App.Controllers.GeofenceListController)
+    .controller('GeofenceGroupController', App.Controllers.GeofenceGroupController)
+    .controller('GeofenceGroupListController', App.Controllers.GeofenceGroupListController)
+    .controller('UserDeviceListController', App.Controllers.UserDeviceListController)
+    .controller('UserDeviceHistoryController', App.Controllers.UserDeviceHistoryController)
 // Services
     .factory('messageService', ['$q', ($q) => new App.Services.MessageService($q)])
     .factory('dataService', ['$http', '$q', 'messageService',
         ($http, $q, messageService) => new App.Services.DataService($http, $q, messageService)])
+    .factory('mapService', [() => new App.Services.MapService()])
     .factory('gpsPlayerService', [() => new App.Services.GpsPlayerService()])
     .run(() => { });
-
-//class Appl {
-//    private router;
-//    private map: IMap;
-//    private viewModels = {};
-
-//    route = (to: string) => {
-//        this.router.route(to);
-//    }
-
-//    getViewModel = (key) => {
-//        return this.viewModels[key];
-//    }
-
-//    setViewModel = (key, value) => {
-//        this.viewModels[key] = value;
-//    }
-
-//    getMap = () => {
-//        return this.map;
-//    }
-
-//    setMap = (map: IMap) => {
-//        this.map = map;
-//    }
-//}
-
-//var app = new Appl();

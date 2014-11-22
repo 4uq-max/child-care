@@ -1,6 +1,6 @@
-﻿class MapService {
-    constructor() {
+﻿module App.Services {
+    export class MapService {
+        constructor() {
+        }
     }
 }
-
-export = MapService;   

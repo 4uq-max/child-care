@@ -1,7 +1,7 @@
-﻿interface GeofenceGroup {
-    Id: number;
-    Name: string;
-    IsUserItem: boolean;
+﻿declare module App {
+    export interface GeofenceGroup {
+        Id: number;
+        Name: string;
+        IsUserItem: boolean;
+    }
 }
-
-export = GeofenceGroup; 

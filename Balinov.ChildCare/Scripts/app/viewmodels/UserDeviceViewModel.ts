@@ -1,7 +1,4 @@
-﻿import ko = require('knockout');
-import HttpRequest = require('libs/httprequest');
-
-declare var app;
+﻿declare var app;
 var platforms;
 
 class UserDeviceViewModel {
@@ -13,25 +10,25 @@ class UserDeviceViewModel {
 
     constructor() {
         if (!platforms) {
-            HttpRequest.getJSON('api/userdevice/getplatforms')
-            .then((data) => {
-                platforms = data;
-                ko.utils.arrayPushAll(this.platforms, data);
-            });
+            //$http.get('api/userdevice/getplatforms')
+            //.then((data) => {
+            //    platforms = data;
+            //    ko.utils.arrayPushAll(this.platforms, data);
+            //});
         } else {
-            ko.utils.arrayPushAll(this.platforms, platforms);
+            //ko.utils.arrayPushAll(this.platforms, platforms);
         }
     }
 
     submit = (viewModel, event: Event) => {
-        var data = JSON.parse(ko.toJSON(viewModel));
+        var data = JSON.parse(viewModel);
         delete data.platforms;
-        var listViewModel = app.getViewModel('UserDevicesList');
-        HttpRequest.postJSON('api/userdevice', data)
-        .then((data) => { 
-            listViewModel.devices.push(data);
-            listViewModel.list();
-        }, errors => this.errors = errors);
+        //var listViewModel = app.getViewModel('UserDevicesList');
+        //$http.post('api/userdevice', data)
+        //.then((data) => { 
+            //listViewModel.devices.push(data);
+            //listViewModel.list();
+        //}, errors => this.errors = errors);
     }
 }
 

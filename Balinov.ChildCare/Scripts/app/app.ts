@@ -1,41 +1,24 @@
-﻿import $ = require('jquery');
-import ko = require('knockout');
-import AccountViewModel = require('app/viewmodels/AccountViewModel');
-import HttpRequest = require('libs/httprequest');
-import Router = require('app/system/router');
-import IMap = require('app/maps/IMap');
-import angular = require('angular');
-import ngRoute = require('ngRoute');
+﻿//import $ = require('jquery');
+//import ko = require('knockout');
+//import AccountViewModel = require('app/viewmodels/AccountViewModel');
+//import HttpRequest = require('libs/httprequest');
+//import Router = require('app/system/router');
+//import IMap = require('app/maps/IMap');
+//import angular = require('angular');
+//import ngRoute = require('ngRoute');
 
-
-import BaseController = require('app/controllers/BaseController');
-import AlarmListController = require('app/controllers/AlarmListController');
-import AlarmController = require('app/controllers/AlarmController');
-import HomeController = require('app/controllers/HomeController');
-import NotificationListController = require('app/controllers/NotificationListController');
-import LoginController = require('app/controllers/LoginController');
-import GeofenceController = require('app/controllers/GeofenceController');
-import GeofenceListController = require('app/controllers/GeofenceListController');
-import GeofenceGroupController = require('app/controllers/GeofenceGroupController');
-import GeofenceGroupListController = require('app/controllers/GeofenceGroupListController');
-import UserDeviceListController = require('app/controllers/UserDeviceListController');
-
-import DataService = require('app/services/DataService');
-import MessageService = require('app/services/MessageService');
-
-ngRoute;
-var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
-    .controller('BaseController', BaseController)
-    .controller('AlarmController', AlarmController)
-    .controller('AlarmListController', AlarmListController)
-    .controller('HomeController', HomeController)
-    .controller('NotificationListController', NotificationListController)
-    .controller('LoginController', LoginController)
-    .controller('GeofenceController', GeofenceController)
-    .controller('GeofenceListController', GeofenceListController)
-    .controller('GeofenceGroupController', GeofenceGroupController)
-    .controller('GeofenceGroupListController', GeofenceGroupListController)
-    .controller('UserDeviceListController', UserDeviceListController)
+var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar'/*, 'ngCookies'*/])
+    .controller('BaseController', App.Controllers.BaseController)
+    .controller('AlarmController', App.Controllers.AlarmController)
+    .controller('AlarmListController', App.Controllers.AlarmListController)
+    .controller('HomeController', App.Controllers.HomeController)
+    .controller('NotificationListController', App.Controllers.NotificationListController)
+    .controller('LoginController', App.Controllers.LoginController)
+    .controller('GeofenceController', App.Controllers.GeofenceController)
+    .controller('GeofenceListController', App.Controllers.GeofenceListController)
+    .controller('GeofenceGroupController', App.Controllers.GeofenceGroupController)
+    .controller('GeofenceGroupListController', App.Controllers.GeofenceGroupListController)
+    .controller('UserDeviceListController', App.Controllers.UserDeviceListController)
     // Config routes
     .config(($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
@@ -82,41 +65,39 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
                 templateUrl: '/scripts/app/views/UserDevice/History.html'
             });
     })
+    .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
+    }])
     // Services
-    .factory('messageService', ['$q', ($q) => new MessageService($q)])
+    .factory('messageService', ['$q', ($q) => new App.Services.MessageService($q)])
     .factory('dataService', ['$http', '$q', 'messageService',
-        ($http, $q, messageService) => new DataService($http, $q, messageService)])
+        ($http, $q, messageService) => new App.Services.DataService($http, $q, messageService)])
     .run(() => { });
 
-class App {
-    private router;
-    private map: IMap;
-    private viewModels = {};
+//class Appl {
+//    private router;
+//    private map: IMap;
+//    private viewModels = {};
 
-    constructor() {
-        this.setViewModel('Account', new AccountViewModel(false));
-    }
+//    route = (to: string) => {
+//        this.router.route(to);
+//    }
 
-    route = (to: string) => {
-        this.router.route(to);
-    }
+//    getViewModel = (key) => {
+//        return this.viewModels[key];
+//    }
 
-    getViewModel = (key) => {
-        var result = this.viewModels[key];
-        return result;
-    }
+//    setViewModel = (key, value) => {
+//        this.viewModels[key] = value;
+//    }
 
-    setViewModel = (key, value) => {
-        this.viewModels[key] = value;
-    }
+//    getMap = () => {
+//        return this.map;
+//    }
 
-    getMap = () => {
-        return this.map;
-    }
+//    setMap = (map: IMap) => {
+//        this.map = map;
+//    }
+//}
 
-    setMap = (map: IMap) => {
-        this.map = map;
-    }
-}
-
-export = App;
+//var app = new Appl();

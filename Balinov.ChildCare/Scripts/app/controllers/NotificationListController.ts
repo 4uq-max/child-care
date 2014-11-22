@@ -1,22 +1,18 @@
-﻿import IScope = require('../app.d');
-import BaseController = require('app/controllers/BaseController');
-import Notification = require('app/models/Notification');
-import DataService = require('app/services/DataService');
+﻿'use strict';
+module App.Controllers {
+    export class NotificationListController extends BaseController {
+        public notifications: Array<Notification>;
 
-class NotificationListController extends BaseController {
-    public notifications: Array<Notification>;
+        constructor($scope: IScope<NotificationListController>,
+            private dataService: Services.DataService) {
+            super($scope);
 
-    constructor($scope: IScope<NotificationListController>,
-        private dataService: DataService) {
-        super($scope);
+            this.dataService.getNotifications()
+                .then((notifications) => { this.notifications = notifications; });
+        }
 
-        this.dataService.getNotifications()
-            .then((notifications) => { this.notifications = notifications; });
-    }
-
-    public remove(item: Notification) {
-        this.dataService.deleteNotification(item.Id);
+        public remove(item: Notification) {
+            this.dataService.deleteNotification(item.Id);
+        }
     }
 }
-
-export = NotificationListController;

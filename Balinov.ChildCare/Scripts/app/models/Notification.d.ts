@@ -1,6 +1,6 @@
-﻿interface Notification {
-    Id: number;
-    Message: string;
+﻿declare module App {
+    export interface Notification {
+        Id: number;
+        Message: string;
+    }
 }
-
-export = Notification;

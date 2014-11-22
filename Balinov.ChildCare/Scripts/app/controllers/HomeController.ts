@@ -4,7 +4,8 @@ module App.Controllers {
         public isAuthenticated: boolean;
 
         constructor($scope: IScope<HomeController>,
-            //$location: 
+            private $location: ng.ILocationService,
+            private $timeout: ng.ITimeoutService,
             private dataService: Services.DataService) {
             super($scope);
             this.isAuthenticated = false;
@@ -12,11 +13,10 @@ module App.Controllers {
             this.dataService.isAuthenticated()
                 .then((data) => {
                     this.isAuthenticated = data.IsAuthenticated;
-                    //this.router = new Router(this);
-                    //var routeTo = data.IsAuthenticated ?
-                    //    (window.location.hash == '' ? '#Home' : window.location.hash)
-                    //    : '#Account/Login';
-                    //this.route(routeTo);
+                    var path = this.isAuthenticated ? '/Home' : '/Account/Login';
+                    this.$timeout(() => {
+                        this.$location.path(path);
+                    }, 500);
                 });
         }
     }

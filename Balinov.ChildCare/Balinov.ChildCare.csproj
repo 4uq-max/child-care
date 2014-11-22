@@ -157,6 +157,7 @@
     <Content Include="Content\Styles\jquery-ui.min.css" />
     <Content Include="Content\Styles\loading-bar.min.css" />
     <Content Include="Content\Styles\ol.css" />
+    <Content Include="Scripts\app\views\Account.html" />
     <Content Include="Scripts\app\views\Alarm\Edit.html" />
     <Content Include="Scripts\app\views\Alarm\List.html" />
     <Content Include="Scripts\app\views\Error.html" />
@@ -285,6 +286,7 @@
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\LoginController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\NotificationListController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\RegisterController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceListController.ts" />
     <TypeScriptCompile Include="Scripts\app\maps\IMap.d.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
@@ -298,6 +300,7 @@
     <TypeScriptCompile Include="Scripts\app\models\GeofenceGroup.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Login.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Notification.d.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Register.d.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DataService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MapService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
@@ -309,7 +312,6 @@
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\RegisterViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceHistoryViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\libs\httprequest.ts" />

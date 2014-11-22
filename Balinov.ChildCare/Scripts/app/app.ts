@@ -1,11 +1,8 @@
 ﻿//import $ = require('jquery');
 //import ko = require('knockout');
 //import AccountViewModel = require('app/viewmodels/AccountViewModel');
-//import HttpRequest = require('libs/httprequest');
 //import Router = require('app/system/router');
 //import IMap = require('app/maps/IMap');
-//import angular = require('angular');
-//import ngRoute = require('ngRoute');
 
 var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar'/*, 'ngCookies'*/])
     .controller('BaseController', App.Controllers.BaseController)
@@ -14,6 +11,7 @@ var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar'/*,
     .controller('HomeController', App.Controllers.HomeController)
     .controller('NotificationListController', App.Controllers.NotificationListController)
     .controller('LoginController', App.Controllers.LoginController)
+    .controller('RegisterController', App.Controllers.RegisterController)
     .controller('GeofenceController', App.Controllers.GeofenceController)
     .controller('GeofenceListController', App.Controllers.GeofenceListController)
     .controller('GeofenceGroupController', App.Controllers.GeofenceGroupController)
@@ -37,6 +35,10 @@ var childCare = angular.module('ChildCare', ['ngRoute', 'angular-loading-bar'/*,
             .when('/Account/Login', {
                 templateUrl: '/scripts/app/views/Account/Login.html',
                 controller: 'LoginController'
+            })
+            .when('/Account/Register', {
+                templateUrl: '/scripts/app/views/Account/Register.html',
+                controller: 'RegisterController'
             })
             .when('/GeofenceGroup/:id?', {
                 templateUrl: '/scripts/app/views/GeofenceGroup/Edit.html',

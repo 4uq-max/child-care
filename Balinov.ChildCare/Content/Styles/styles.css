@@ -64,12 +64,6 @@ footer {
     margin-left: 12px;
     list-style-type: none;
 }
-.errors ul li:before
-{
-    content:"⚫";
-    color: #68217A;
-    padding-right: 10px;
-}
 
 .nav-col ul {
     list-style-type: none;

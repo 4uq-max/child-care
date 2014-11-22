@@ -1,4 +1,4 @@
-﻿<div class="row" ng-controller="LoginController">
+﻿<div class="row">
     <div class="col-sm-5 hidden-xs">
         <div style="background-color: #68217A; color: #fff; max-width: 420px; margin: 0 auto;">
             <img src="Content/Images/login-image.jpg" alt="" style="max-width: 420px; width: 100%;" />
@@ -6,6 +6,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-xs-12">
+        <div ng-include="model.errors.length ? './Scripts/app/views/Error.html' : null"></div>
         <form method="post" id="LoginForm" role="form">
             <h1>Влизане</h1>
             <div class="form-group">

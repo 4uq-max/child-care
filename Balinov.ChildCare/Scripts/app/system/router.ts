@@ -1,8 +1,5 @@
-﻿import $ = require('jquery');
-import View = require('app/system/view');
-import HttpRequest = require('libs/httprequest');
+﻿import View = require('app/system/view');
 //import LoginViewModel = require('app/viewmodels/LoginViewModel');
-import RegisterViewModel = require('app/viewmodels/RegisterViewModel');
 import OpenLayersMap = require('app/maps/OpenLayersMap');
 
 class Router {
@@ -55,22 +52,12 @@ function initRoutes(router) {
     //});
 
     //routie('/Account/LogOff', () => {
-    //    var promise = $http.post('api/account/logout');
-    //    promise.done((isLoggedOff: boolean) => {
+    //    $http.post('api/account/logout')
+    //    .then((isLoggedOff: boolean) => {
     //        if (isLoggedOff) {
     //            router.route("Account/Login");
     //            router.app.getViewModel('Account').IsAuthenticated(false);
     //        }
-    //    });
-    //});
-
-    //routie('/Account/Register', () => {
-    //    var main = $("main");
-    //    var promise = View.render(router.getRoute(), main);
-    //    promise.done(() => {
-    //        var container = main.find('#RegisterForm')[0];
-    //        var viewModel = new RegisterViewModel();
-    //        //ko.applyBindings(viewModel, ko.cleanNode(container));
     //    });
     //});
 }

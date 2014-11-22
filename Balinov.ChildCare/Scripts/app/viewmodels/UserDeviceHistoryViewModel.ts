@@ -1,5 +1,4 @@
 ﻿import $ = require('jquery');
-import initJqueryUI = require('JqueryUI');
 import ko = require('knockout');
 import HttpRequest = require('libs/httprequest');
 import LocationPlayerViewModel = require('app/viewmodels/LocationPlayerViewModel');
@@ -13,7 +12,6 @@ class UserDeviceHistoryViewModel {
 
     constructor(item) {
         this.DeviceId = item.DeviceId;
-        initJqueryUI;
         $('#Date').val($.datepicker.formatDate('dd.mm.yy', new Date()));
     }
 

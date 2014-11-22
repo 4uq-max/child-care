@@ -1,5 +1,4 @@
 ﻿import $ = require('jquery');
-import initJqueryUI = require('JqueryUI');
 import View = require('app/system/view');
 
 declare var app;

@@ -17,7 +17,7 @@ class LoginController extends BaseController {
 
     submit() {
         var parent: any = this.$scope.$parent;
-       // this.$scope
+
         console.log('parent scope:', parent, parent.IsAuthenticated);
         this.dataService.login(this.login)
             .then(() => {

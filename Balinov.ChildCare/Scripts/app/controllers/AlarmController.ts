@@ -5,8 +5,6 @@ import Alarm = require('app/models/Alarm');
 import Geofence = require('app/models/Geofence');
 import Device = require('app/models/Device');
 import DataService = require('app/services/DataService');
-import Dialog = require('app/system/dialog');
-
 class AlarmController extends BaseController {
     private alarm: Alarm;
     private geofences: Geofence[];

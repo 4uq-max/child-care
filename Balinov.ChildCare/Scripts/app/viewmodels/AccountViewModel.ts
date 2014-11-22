@@ -1,10 +1,6 @@
-﻿import ko = require('knockout');
-
-class AccountViewModel {
-    IsAuthenticated;
-
-    constructor(isAuthenticated) {
-        this.IsAuthenticated = ko.observable(isAuthenticated);
+﻿class AccountViewModel {
+    constructor(public IsAuthenticated: boolean) {
     }
 }
+
 export = AccountViewModel;

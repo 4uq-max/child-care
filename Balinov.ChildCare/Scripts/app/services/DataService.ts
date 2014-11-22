@@ -3,7 +3,7 @@ import Device = require('app/models/Device');
 import Notification = require('app/models/Notification');
 import Geofence = require('app/models/Geofence');
 import GeofenceGroup = require('app/models/GeofenceGroup');
-import Dialog = require('app/system/dialog');
+import MessageService = require('app/services/MessageService');
 
 class DataService {
     private alarms: Alarm[] = null;
@@ -13,7 +13,8 @@ class DataService {
     private geofenceGroups: GeofenceGroup[] = null;
 
     constructor(private $http: ng.IHttpService,
-        private $q: ng.IQService) {
+        private $q: ng.IQService,
+        private messageService: MessageService) {
     }
 
     getAlarms(): ng.IPromise<any> {
@@ -70,6 +71,7 @@ class DataService {
     }
 
     getGeofences(): ng.IPromise<Geofence[]> {
+        
         var defer = this.$q.defer<Geofence[]>();
         if (this.geofences == null) {
             this.$http.get<Geofence[]>('api/geofence')
@@ -85,50 +87,72 @@ class DataService {
         return defer.promise;
     }
 
+    // Delete
     deleteAlarm(id: number) {
-        return this.$http.delete('api/alarm/' + id)
-            .success((data: any) => {
-                if (data.Success) {
-                    this.removeItem(this.alarms, id);
-                } else {
-                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
-                }
-            });
+        return this.deleteItem('api/alarm/' + id)
+            .then(() => this.removeItem(this.alarms, id));
     }
 
     deleteDevice(id: number) {
-        return this.$http.delete('api/userdevice/?deviceId=' + id)
-            .success((data: any) => {
-                if (data.Success) {
-                    this.removeItem(this.devices, id, item => item.DeviceId);
-                } else {
-                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
-                }
-            });
+        return this.deleteItem('api/userdevice/?deviceId=' + id)
+            .then(() => this.removeItem(this.devices, id, item => item.DeviceId));
     }
 
-    deleteNotification(id: number) {
-        return this.$http.delete('api/notification/' + id)
-            .success((data: any) => {
-                if (data.Success) {
-                    this.removeItem(this.notifications, id);
-                } else {
-                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
-                }
-            });
+    deleteGeofence(id: number) {
+        return this.deleteItem('api/geofence/' + id)
+            .then(() => this.removeItem(this.geofences, id));
     }
 
     deleteGeofenceGroup(id: number) {
-        return this.$http.delete('api/geofencegroup/' + id)
-            .success((data: any) => {
-                if (data.Success) {
-                    this.removeItem(this.geofenceGroups, id);
-                } else {
-                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
-                }
-            });
+        return this.deleteItem('api/geofencegroup/' + id)
+            .then(() => this.removeItem(this.geofenceGroups, id));
     }
-    
+
+    deleteNotification(id: number) {
+        return this.deleteItem('api/notification/' + id)
+            .then(() => this.removeItem(this.notifications, id));
+    }
+
+    deleteItem(url) {
+        var defer = this.$q.defer<any>();
+        this.messageService.confirm('Сигурни ли сте, че исате да изтриете избраият елемент?')
+            .then(() => this.$http.delete<any>(url)
+                .success(data => {
+                    if (data.Success) {
+                        defer.resolve(data);
+                    } else {
+                        this.messageService.alert('Елементът не може да бъде изтрит, тъй като се използва.');
+                        data.reject();
+                    }
+                })
+                .error(error => defer.reject(error))
+            );
+
+        return defer.promise;
+    }
+
+    // Get item
+
+    getAlarm(id): Alarm {
+        return this.getItem(this.alarms, id);
+    }
+
+    getGeofence(id): Geofence {
+        return this.getItem(this.geofences, id);
+    }
+
+    getGeofenceGroup(id): GeofenceGroup {
+        return this.getItem(this.geofenceGroups, id);
+    }
+
+    private getItem(array: { Id: any }[], id): any {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].Id == id) {
+                return array[i];
+            }
+        }
+    }
+
     saveGeofenceGroup(item: GeofenceGroup) {
         var difer = this.$q.defer<GeofenceGroup>();
 
@@ -185,27 +209,12 @@ class DataService {
         return difer.promise;
     }
 
-    getGeofenceGroup(id) : GeofenceGroup {
-        return this.getItem(this.geofenceGroups, id);
-    }
-
-    deleteGeofence(id: number) {
-        return this.$http.delete('api/geofence/' + id)
-            .success((data: any) => {
-                if (data.Success) {
-                    this.removeItem(this.geofences, id);
-                } else {
-                    Dialog.alert('Елементът не може да бъде изтрит, тъй като се използва.');
-                }
-            });
-    }
-
-    getGeofence(id): Geofence {
-        return this.getItem(this.geofences, id);
-    }
-
-    getAlarm(id): Alarm {
-        return this.getItem(this.alarms, id);
+    isAuthenticated() {
+        var defer = this.$q.defer<any>();
+        this.$http.get('api/account')
+            .success(data => defer.resolve(data))
+            .error(error => defer.reject(error));
+        return defer.promise;
     }
 
     login(data) {
@@ -218,13 +227,7 @@ class DataService {
     }
 
     // Common
-    private getItem(array: { Id: any }[], id) : any {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i].Id == id) {
-                return array[i];
-            }
-        }
-    }
+    
 
     private removeItem(array: any[], id, getId?) {
         if (!getId) {

@@ -300,7 +300,6 @@
     <TypeScriptCompile Include="Scripts\app\services\DataService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MapService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
-    <TypeScriptCompile Include="Scripts\app\system\dialog.ts" />
     <TypeScriptCompile Include="Scripts\app\system\router.ts" />
     <TypeScriptCompile Include="Scripts\app\system\view.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\AccountViewModel.ts">

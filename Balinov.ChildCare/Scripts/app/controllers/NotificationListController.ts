@@ -1,7 +1,6 @@
 ﻿import IScope = require('../app.d');
 import BaseController = require('app/controllers/BaseController');
 import Notification = require('app/models/Notification');
-import Dialog = require('app/system/dialog');
 import DataService = require('app/services/DataService');
 
 class NotificationListController extends BaseController {
@@ -16,8 +15,7 @@ class NotificationListController extends BaseController {
     }
 
     public remove(item: Notification) {
-        Dialog.confirm('Сигурни ли сте, че исате да изтриете избраият елемент?')
-            .then(() => this.dataService.deleteNotification(item.Id));
+        this.dataService.deleteNotification(item.Id);
     }
 }
 

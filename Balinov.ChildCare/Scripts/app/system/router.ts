@@ -45,7 +45,8 @@ function initRoutes(router) {
             return;
         }
         
-        View.render(router.getRoute(), $('main')).then(() => {
+        View.render(router.getRoute(), $('main'))
+        .then(() => {
             var map = new OpenLayersMap('map');
             router.app.setMap(map);
         });
@@ -54,11 +55,11 @@ function initRoutes(router) {
     routie('/Account/Login', () => {
         var main = $("main");
         var promise = View.render(router.getRoute(), main);
-        //promise.done(() => {
+        promise.done(() => {
         //var container = main.find('#LoginForm')[0];
         //var viewModel = new LoginViewModel();
         //ko.applyBindings(viewModel, ko.cleanNode(container));
-        //});
+        });
     });
 
     routie('/Account/LogOff', () => {

@@ -1,6 +1,5 @@
 ﻿import ko = require('knockout');
 import HttpRequest = require('libs/httprequest');
-import Dialog = require('app/system/dialog');
 //import GeofenceGroupsListViewModel = require('app/viewmodels/GeofenceGroupsListViewModel');
 
 declare var app;

@@ -1,7 +1,6 @@
 ﻿'use strict';
 import IScope = require('../app.d');
 import BaseController = require('app/controllers/BaseController');
-import Dialog = require('app/system/dialog');
 import Alarm = require('app/models/Alarm');
 import DataService = require('app/services/DataService');
 
@@ -17,8 +16,7 @@ class AlarmListController extends BaseController {
     }
 
     remove(alarm: Alarm) {
-        Dialog.confirm('Сигурни ли сте, че исате да изтриете избраият елемент?')
-            .then(() => this.dataService.deleteAlarm(alarm.Id));
+        this.dataService.deleteAlarm(alarm.Id);
     }
 }
 

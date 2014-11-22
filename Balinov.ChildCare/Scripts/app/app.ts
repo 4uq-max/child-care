@@ -7,6 +7,7 @@ import IMap = require('app/maps/IMap');
 import angular = require('angular');
 import ngRoute = require('ngRoute');
 
+
 import BaseController = require('app/controllers/BaseController');
 import AlarmListController = require('app/controllers/AlarmListController');
 import AlarmController = require('app/controllers/AlarmController');
@@ -20,6 +21,7 @@ import GeofenceGroupListController = require('app/controllers/GeofenceGroupListC
 import UserDeviceListController = require('app/controllers/UserDeviceListController');
 
 import DataService = require('app/services/DataService');
+import MessageService = require('app/services/MessageService');
 
 ngRoute;
 var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
@@ -29,8 +31,8 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
     .controller('HomeController', HomeController)
     .controller('NotificationListController', NotificationListController)
     .controller('LoginController', LoginController)
-    .controller('GeofenceController', GeofenceController) 
-    .controller('GeofenceListController', GeofenceListController) 
+    .controller('GeofenceController', GeofenceController)
+    .controller('GeofenceListController', GeofenceListController)
     .controller('GeofenceGroupController', GeofenceGroupController)
     .controller('GeofenceGroupListController', GeofenceGroupListController)
     .controller('UserDeviceListController', UserDeviceListController)
@@ -81,7 +83,9 @@ var childCare = angular.module('ChildCare', ['ngRoute'/*, 'ngCookies'*/])
             });
     })
     // Services
-    .factory('dataService', ['$http', '$q', ($http, $q) => new DataService($http, $q)])
+    .factory('messageService', ['$q', ($q) => new MessageService($q)])
+    .factory('dataService', ['$http', '$q', 'messageService',
+        ($http, $q, messageService) => new DataService($http, $q, messageService)])
     .run(() => { });
 
 class App {
@@ -91,18 +95,6 @@ class App {
 
     constructor() {
         this.setViewModel('Account', new AccountViewModel(false));
-    }
-
-    run = () => {
-        HttpRequest.getJSON('api/account').then((data) => {
-            this.getViewModel('Account').IsAuthenticated(data.IsAuthenticated);
-            ko.applyBindings(this.getViewModel('Account'), $('nav')[0]);
-            this.router = new Router(this);
-            var routeTo = data.IsAuthenticated ?
-                (window.location.hash == '' ? '#Home' : window.location.hash)
-                : '#Account/Login';
-            //this.route(routeTo);
-        });
     }
 
     route = (to: string) => {

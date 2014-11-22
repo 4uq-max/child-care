@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../libs/typings/jquery.blockui.d.ts" />
 import $ = require('jquery');
-import initBlockUI = require('blockUI');
-
+import initBlockUI = require('blockUI'); /// TODO: remove this when requirejs is removed.
+ 
 $.blockUI.defaults.overlayCSS.color = "#ccc";
 $.blockUI.defaults.overlayCSS.cursor = 'poiter';
 

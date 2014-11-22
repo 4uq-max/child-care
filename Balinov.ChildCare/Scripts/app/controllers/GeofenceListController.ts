@@ -1,7 +1,6 @@
 ﻿'use strict';
 import IScope = require('../app.d');
 import BaseController = require('app/controllers/BaseController');
-import Dialog = require('app/system/dialog');
 import Geofence = require('app/models/Geofence');
 import DataService = require('app/services/DataService');
 
@@ -22,8 +21,7 @@ class GeofenceListController extends BaseController {
     }
 
     remove(geofence: Geofence) {
-        Dialog.confirm('Сигурни ли сте, че исате да изтриете избраият елемент?')
-            .then(() => this.dataService.deleteGeofence(geofence.Id));
+        this.dataService.deleteGeofence(geofence.Id);
     }
 
     toggle(geofence: Geofence) {

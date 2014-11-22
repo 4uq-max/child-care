@@ -4,19 +4,20 @@ import BaseController = require('app/controllers/BaseController');
 import Geofence = require('app/models/Geofence');
 import GeofenceGroup = require('app/models/GeofenceGroup');
 import DataService = require('app/services/DataService');
-import Dialog = require('app/system/dialog');
+import MessageService = require('app/services/MessageService');
 
 class GeofenceController extends BaseController {
     private geofence: Geofence;
-    private errors: Array<string>;
-    private groups: Array<GeofenceGroup>;
+    private errors: string[];
+    private groups: GeofenceGroup[];
     private drawingMode = false;
     private isEdit = false;
 
     constructor($scope: IScope<GeofenceController>,
         private $routeParams: ng.route.IRouteParamsService,
         private $location: ng.ILocationService,
-        private dataService: DataService) {
+        private dataService: DataService,
+        private messageService: MessageService) {
         super($scope);
 
         var id = $routeParams['id'];
@@ -90,7 +91,7 @@ class GeofenceController extends BaseController {
 
     draw = () => {
         if (this.geofence.Type == "None") {
-            Dialog.alert('Моля, първо изберете тип зона.');
+            this.messageService.alert('Моля, първо изберете тип зона.');
             return false;
         }
 

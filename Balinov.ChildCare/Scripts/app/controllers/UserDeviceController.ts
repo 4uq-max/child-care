@@ -6,20 +6,19 @@ module App.Controllers {
         private errors: string[];
 
         constructor($scope: IScope<UserDeviceController>,
+            private $location: ng.ILocationService,
             private dataService: Services.DataService) {
             super($scope);
 
+            this.device = { Name: '', Platform: '', Uuid: '' };
             this.dataService.getPlatforms()
                 .then(platforms => this.platforms = platforms);
         }
 
         submit() {
-            //var listViewModel = app.getViewModel('UserDevicesList');
-            //$http.post('api/userdevice', this.device)
-            //.then((data) => { 
-            //listViewModel.devices.push(data);
-            //listViewModel.list();
-            //}, errors => this.errors = errors);
+            this.dataService.saveDevice(this.device)
+                .then(() => this.$location.path('/UserDevice/List'),
+                errors => this.errors = errors);
         }
     }
 }

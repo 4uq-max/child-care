@@ -225,6 +225,17 @@ module App.Services {
             return difer.promise;
         }
 
+        saveDevice(device) {
+            var difer = this.$q.defer<GeofenceGroup>();
+            this.$http.post<any>('api/userdevice', device)
+                .success((data) => {
+                    this.devices.push(data);
+                    difer.resolve(data);
+                })
+                .error((error) => difer.reject(error));
+            return difer.promise;
+        }
+
         isAuthenticated() {
             var defer = this.$q.defer<any>();
             this.$http.get('api/account')

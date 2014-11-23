@@ -39,7 +39,8 @@
                 controller: 'GeofenceListController'
             })
             .when('/UserDevice/Edit', {
-                templateUrl: '/scripts/app/views/UserDevice/Edit.html'
+                templateUrl: '/scripts/app/views/UserDevice/Edit.html',
+                controller: 'UserDeviceController'
             })
             .when('/UserDevice/List', {
                 templateUrl: '/scripts/app/views/UserDevice/List.html',
@@ -65,6 +66,7 @@
     .controller('GeofenceListController', App.Controllers.GeofenceListController)
     .controller('GeofenceGroupController', App.Controllers.GeofenceGroupController)
     .controller('GeofenceGroupListController', App.Controllers.GeofenceGroupListController)
+    .controller('UserDeviceController', App.Controllers.UserDeviceController)
     .controller('UserDeviceListController', App.Controllers.UserDeviceListController)
     .controller('UserDeviceHistoryController', App.Controllers.UserDeviceHistoryController)
 // Services

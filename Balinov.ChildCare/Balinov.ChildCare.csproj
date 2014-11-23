@@ -171,7 +171,6 @@
     <Content Include="Scripts\app\views\Geofence\List.html" />
     <Content Include="Scripts\app\views\Home.html" />
     <Content Include="Content\Images\logo.png" />
-    <Content Include="Scripts\app-config.js" />
     <Content Include="Scripts\app\views\UserDevice\Player.html" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular\angular-route.min.js" />
@@ -183,9 +182,6 @@
     <Content Include="Scripts\libs\jquery.blockUI.js" />
     <Content Include="Scripts\libs\knockout-3.1.0.js" />
     <Content Include="Scripts\libs\ol-whitespace.js" />
-    <Content Include="Scripts\libs\ol.js" />
-    <Content Include="Scripts\libs\ol1.js" />
-    <Content Include="Scripts\libs\routie.min.js" />
     <Content Include="Content\Styles\styles.css" />
     <Content Include="Scripts\app\views\Account\Login.html" />
     <Content Include="Scripts\app\views\Account\Register.html" />
@@ -289,15 +285,10 @@
     <TypeScriptCompile Include="Scripts\app\controllers\LoginController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\NotificationListController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\RegisterController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceHistoryController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceListController.ts" />
     <TypeScriptCompile Include="Scripts\app\directives\DatePicker.ts" />
-    <TypeScriptCompile Include="Scripts\app\maps\IMap.d.ts">
-      <Generator>MSBuild:TypeScriptCompile</Generator>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Scripts\app\maps\OpenLayersMap.ts">
-      <Generator>MSBuild:TypeScriptCompile</Generator>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\app\models\Alarm.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Device.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Geofence.d.ts" />
@@ -311,12 +302,8 @@
     <TypeScriptCompile Include="Scripts\app\services\GpsPlayerService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MapService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
-    <TypeScriptCompile Include="Scripts\app\system\router.ts" />
-    <TypeScriptCompile Include="Scripts\app\system\view.ts" />
     <TypeScriptCompile Include="Scripts\app\app.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.blockUI.d.ts" />

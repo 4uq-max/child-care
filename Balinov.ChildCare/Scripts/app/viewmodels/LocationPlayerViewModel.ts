@@ -1,7 +1,4 @@
-﻿import $ = require('jquery');
-import View = require('app/system/view');
-
-declare var app;
+﻿declare var app;
 declare var ol;
 
 class LocationPlayerViewModel {

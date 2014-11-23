@@ -7,6 +7,7 @@
         Type: string;
         Visible: boolean;
         Feature? ;
+        GeoJSON? ;
         GeoJSONBuffered? ;
     }
 }

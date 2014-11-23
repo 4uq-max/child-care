@@ -4,6 +4,7 @@
     export class MapService {
         private map;
         private layers = {};
+        private drawInteraction;
 
         constructor() {
             this.initLayers();
@@ -37,6 +38,43 @@
             var source = this.layers['vector'].getSource();
             source.removeFeature(feature);
         }
+        
+        activateDrawing = (type: string) => {
+            if (type == "Circle") type = "Point"
+            else if (type == "Strip") type = "LineString";
+            else type = "Polygon";
+
+            this.drawInteraction = new ol.interaction.Draw({
+                source: this.getLayer('drawing').getSource(),
+                type: type
+            });
+            this.map.addInteraction(this.drawInteraction);
+        }
+
+        deactivateDrawing = () => {
+            if (!this.drawInteraction) return;
+            this.map.removeInteraction(this.drawInteraction);
+            this.getLayer('drawing').getSource().clear();
+        }
+
+        teleport = (id) => {
+            this.map.setTarget(id);
+        }
+
+        getLayer = (name: string) => {
+            return this.layers[name];
+        }
+
+        /*
+        if (navigator.geolocation) {
+            var showPosition = function (position) {
+                var coords = position.coords;
+                view.setZoom(15);
+                view.setCenter(ol.proj.transform([coords.longitude, coords.latitude], 'EPSG:4326', 'EPSG:3857'));
+            };
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        */
 
         private initLayers() {
             this.layers['osm'] = new ol.layer.Tile({
@@ -93,10 +131,6 @@
                 minZoom: 5,
                 zoom: 6
             });
-        }
-
-        private getLayer = (name: string) => {
-            return this.layers[name];
         }
     }
 }

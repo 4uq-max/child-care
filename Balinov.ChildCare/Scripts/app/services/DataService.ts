@@ -6,6 +6,7 @@ module App.Services {
         private notifications: Notification[] = null;
         private geofences: Geofence[] = null;
         private geofenceGroups: GeofenceGroup[] = null;
+        private platforms: string[] = null;
 
         constructor(private $http: ng.IHttpService,
             private $q: ng.IQService,
@@ -54,6 +55,17 @@ module App.Services {
                 defer.promise.then((geofenceGroups) => this.geofenceGroups = geofenceGroups);
             } else {
                 defer.resolve(this.geofenceGroups);
+            }
+            return defer.promise;
+        }
+
+        getPlatforms() {
+            var defer = this.$q.defer<string[]>();
+            if (this.platforms == null) {
+                defer = this.getAll<string>('api/userdevice/getplatforms', defer);
+                defer.promise.then((platforms) => this.platforms = platforms);
+            } else {
+                defer.resolve(this.platforms);
             }
             return defer.promise;
         }

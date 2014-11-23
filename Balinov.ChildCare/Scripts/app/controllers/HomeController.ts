@@ -25,3 +25,13 @@ module App.Controllers {
         }
     }
 }
+
+//routie('/Account/LogOff', () => {
+//    $http.post('api/account/logout')
+//    .then((isLoggedOff: boolean) => {
+//        if (isLoggedOff) {
+//            this.route("Account/Login");
+//            this.app.getViewModel('Account').IsAuthenticated(false);
+//        }
+//    });
+//});

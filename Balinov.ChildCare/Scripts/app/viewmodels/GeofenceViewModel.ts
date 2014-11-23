@@ -1,4 +1,4 @@
-﻿import HttpRequest = require('libs/httprequest');
+﻿//import HttpRequest = require('libs/httprequest');
 //import GeofenceGroupsListViewModel = require('app/viewmodels/GeofenceGroupsListViewModel');
 
 declare var app;

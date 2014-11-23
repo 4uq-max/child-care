@@ -284,12 +284,14 @@
     <TypeScriptCompile Include="Scripts\app\controllers\GeofenceGroupController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\GeofenceGroupListController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\GeofenceListController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\GpsPlayerController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\LoginController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\NotificationListController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\RegisterController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceHistoryController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceListController.ts" />
+    <TypeScriptCompile Include="Scripts\app\directives\DatePicker.ts" />
     <TypeScriptCompile Include="Scripts\app\maps\IMap.d.ts">
       <Generator>MSBuild:TypeScriptCompile</Generator>
     </TypeScriptCompile>
@@ -300,6 +302,7 @@
     <TypeScriptCompile Include="Scripts\app\models\Device.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Geofence.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\GeofenceGroup.d.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\GpsPlayer.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\History.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Login.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Notification.d.ts" />
@@ -314,7 +317,6 @@
     <TypeScriptCompile Include="Scripts\app\viewmodels\GeofenceViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewmodels\UserDeviceViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\libs\httprequest.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.blockUI.d.ts" />

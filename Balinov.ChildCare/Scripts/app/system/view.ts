@@ -1,6 +1,4 @@
-﻿import HttpRequest = require('libs/httprequest');
-
-declare var app;
+﻿declare var app;
 class View {
     static render = (name, container) => {
         if (container.length == 0) {

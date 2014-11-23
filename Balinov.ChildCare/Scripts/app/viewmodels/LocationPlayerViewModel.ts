@@ -6,9 +6,8 @@ declare var ol;
 
 class LocationPlayerViewModel {
     private data;
-    private dialog;
+
     private slider;
-    private map;
     private timestep = 10;
     private CurrentTime = ko.observable(0);
     private interval;
@@ -20,18 +19,9 @@ class LocationPlayerViewModel {
     CurrentTimeText = '00:00:00';
     EndTimeText = '00:00:00';
 
-    constructor(data) {
-        this.data = data;
-        this.map = app.getMap();
-    }
-
     show = () => {
-        $.blockUI.defaults.overlayCSS.color = "#ccc";
-        $.blockUI.defaults.overlayCSS.cursor = 'pointer';
-        $.blockUI({ message: '' });
-        this.dialog = $('<div id="player-container"></div>');
-        $('body').append(this.dialog);
 
+        /*
         View.render('UserDevice/Player', this.dialog)
         .then(() => {
             this.map.teleport('player-map');
@@ -57,18 +47,18 @@ class LocationPlayerViewModel {
             var startPosition = this.data.Positions[0];
             var geoJSON = { type: "Point", coordinates: [startPosition.Longitude, startPosition.Latitude] };
             this.feature = this.map.addFeature(geoJSON, false);
-        });
+        });*/
     }
 
     list = () => {
-        this.map.removeFeature(this.feature);
-        if (!this.Paused) {
-            this.pause();
-        }
-        $.unblockUI();
-        this.map.teleport('map');
-        this.dialog.remove();
-        delete this.dialog;
+        //this.map.removeFeature(this.feature);
+        //if (!this.Paused) {
+        //    this.pause();
+        //}
+        //$.unblockUI();
+        //this.map.teleport('map');
+        //this.dialog.remove();
+        //delete this.dialog;
     }
 
     play = () => {

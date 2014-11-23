@@ -50,7 +50,7 @@
                 controller: 'UserDeviceHistoryController'
             });
     })
-    .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
         cfpLoadingBarProvider.includeSpinner = false;
     }])
 // Controllers
@@ -72,5 +72,13 @@
     .factory('dataService', ['$http', '$q', 'messageService',
         ($http, $q, messageService) => new App.Services.DataService($http, $q, messageService)])
     .factory('mapService', [() => new App.Services.MapService()])
-    .factory('gpsPlayerService', [() => new App.Services.GpsPlayerService()])
-    .run(() => { });
+    .factory('gpsPlayerService', ['mapService', (mapService) => new App.Services.GpsPlayerService(mapService)])
+    .run(($rootScope: ng.IRootScopeService) => {
+        // Prevent two request at the same time by blocking the screen.
+        $rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {
+            $.blockUI({ message: null, overlayCSS: { opacity: 0 } });
+        });
+        $rootScope.$on('cfpLoadingBar:completed', (evt) => {
+            $.unblockUI();
+        });
+    });

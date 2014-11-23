@@ -6,7 +6,7 @@ class LocationPlayerViewModel {
 
     private slider;
     private timestep = 10;
-    private CurrentTime = ko.observable(0);
+    private CurrentTime = 0;
     private interval;
     private feature;
 
@@ -70,19 +70,19 @@ class LocationPlayerViewModel {
     stop = () => {
         this.pause();
         this.Paused = true;
-        this.CurrentTime(this.getMinTime());
+        this.CurrentTime = this.getMinTime();
         this.slider.slider('value', 0);
     }
 
 
     onSliderChange = (e, ui) => {
-        if (this.CurrentTime() > this.getMaxTime()) {
+        if (this.CurrentTime > this.getMaxTime()) {
             this.stop();
         }
-        this.CurrentTime(this.getMinTime() + ui.value * this.timestep);
-        this.CurrentTimeText = this.secondsToTime(this.CurrentTime());
+        this.CurrentTime = this.getMinTime() + ui.value * this.timestep;
+        this.CurrentTimeText = this.secondsToTime(this.CurrentTime);
 
-        var closestActivityIndex = this.findClosestFeedIndex(this.CurrentTime(), this.data.Activities);
+        var closestActivityIndex = this.findClosestFeedIndex(this.CurrentTime, this.data.Activities);
         var currentActivity = this.data.Activities[closestActivityIndex];
         if (currentActivity) {
             this.CurrentActivity = this.getTypeName(currentActivity.Type);
@@ -103,11 +103,11 @@ class LocationPlayerViewModel {
     resume = () => {
         this.interval = setInterval(() => {
             var startTime = this.getMinTime();
-            if (!this.CurrentTime()) {
-                this.CurrentTime(startTime);
+            if (!this.CurrentTime) {
+                this.CurrentTime = startTime;
             }
-            this.slider.slider('value', (this.CurrentTime() - startTime) / this.timestep);
-            this.CurrentTime(this.CurrentTime() + this.timestep);
+            this.slider.slider('value', (this.CurrentTime - startTime) / this.timestep);
+            this.CurrentTime = this.CurrentTime + this.timestep;
         }, 250);
     }
     
@@ -115,7 +115,7 @@ class LocationPlayerViewModel {
         clearInterval(this.interval);
     }
     private getComputedPosition = () => {
-        var time = this.CurrentTime();
+        var time = this.CurrentTime;
         var closestPositionIndex = this.findClosestFeedIndex(time, this.data.Positions);
         var currentFeed = this.data.Positions[closestPositionIndex];
         var nextFeed = this.data.Positions[closestPositionIndex + 1];

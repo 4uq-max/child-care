@@ -15,7 +15,7 @@
             //this.dialog = $('<div id="player-container" ng-include></div>');
             $('body').append(this.dialog);
 
-           // this.dialog.attr('src', "'./Scripts/app/views/UserDevice/Player.html'");
+           //this.dialog.attr('src', "'./Scripts/app/views/UserDevice/Player.html'");
         }
     }
 }

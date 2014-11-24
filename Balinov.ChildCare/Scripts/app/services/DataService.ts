@@ -10,7 +10,8 @@ module App.Services {
 
         constructor(private $http: ng.IHttpService,
             private $q: ng.IQService,
-            private messageService: Services.MessageService) {
+            private messageService: Services.MessageService,
+            private mapService: Services.MapService) {
         }
 
         getAlarms(): ng.IPromise<any> {
@@ -218,6 +219,43 @@ module App.Services {
                         }
 
                         difer.resolve(alarm);
+                    })
+                    .error((error) => difer.reject(error));
+            }
+
+            return difer.promise;
+        }
+
+        saveGeofence(item: Geofence) {
+            var difer = this.$q.defer<Geofence>();
+
+            if (item.Id == 0) {
+                this.$http.post<Geofence>('api/geofence', item)
+                    .success((geofence) => {
+                        geofence.Visible = false;
+                        this.geofences.push(geofence);
+                        difer.resolve(geofence);
+                    })
+                    .error((error) => difer.reject(error));
+            } else {
+
+                this.$http.put<Geofence>('api/geofence' + item.Id, item)
+                    .success((geofence) => {
+                        for (var i = 0; i < this.alarms.length; i++) {
+                            if (this.geofences[i].Id == item.Id) {
+                                var oldGeofence = this.geofences[i];
+                                geofence.Visible = oldGeofence.Visible;
+                                if (oldGeofence.Visible) {
+                                    this.mapService.removeFeature(oldGeofence.Feature);
+                                    geofence.Feature = this.mapService.addFeature(geofence.GeoJSONBuffered);
+                                }
+                                
+                                this.geofences[i] = geofence;
+                                break;
+                            }
+                        }
+
+                        difer.resolve(geofence);
                     })
                     .error((error) => difer.reject(error));
             }

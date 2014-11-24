@@ -1,5 +1,5 @@
 ﻿<h1>
-    <a href="#/Geofences" class="icon icon-back dark"></a>
+    <a href="#/Geofences" ng-click="model.list()" class="icon icon-back dark"></a>
     <span ng-hide="model.isEdit">Нова зона</span>
     <span ng-show="model.isEdit">Редакция на зона</span>
 </h1>
@@ -16,12 +16,15 @@
         </select>
     </div>
     <div class="form-group" ng-hide="model.isEdit">
-     <select name="Type" ng-model="model.geofence.Type" ng-init="model.geofence.Type = 'None'" class="form-control">
-      <option value="None">Изберете тип зона</option>
-      <option value="Circle">Окръжност</option>
-      <option value="Strip">Ивица</option>
-      <option value="Polygon">Полигон</option>
-     </select>
+        <select name="Type" class="form-control"
+                ng-model="model.geofence.Type"
+                ng-init="model.geofence.Type = 'None'"
+                ng-change="model.onChange()">
+            <option value="None">Изберете тип зона</option>
+            <option value="Circle">Окръжност</option>
+            <option value="Strip">Ивица</option>
+            <option value="Polygon">Полигон</option>
+        </select>
     </div>
     <div class="form-group">
         <input type="text" placeholder="Радиус" ng-model="model.geofence.BufferRadius" class="form-control" />

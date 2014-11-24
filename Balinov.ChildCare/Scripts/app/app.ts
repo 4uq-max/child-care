@@ -71,8 +71,8 @@
     .controller('UserDeviceHistoryController', App.Controllers.UserDeviceHistoryController)
 // Services
     .factory('messageService', ['$q', ($q) => new App.Services.MessageService($q)])
-    .factory('dataService', ['$http', '$q', 'messageService',
-        ($http, $q, messageService) => new App.Services.DataService($http, $q, messageService)])
+    .factory('dataService', ['$http', '$q', 'messageService', 'mapService',
+        ($http, $q, messageService, mapService) => new App.Services.DataService($http, $q, messageService, mapService)])
     .factory('mapService', [() => new App.Services.MapService()])
     .factory('gpsPlayerService', ['mapService', (mapService) => new App.Services.GpsPlayerService(mapService)])
     .run(($rootScope: ng.IRootScopeService) => {

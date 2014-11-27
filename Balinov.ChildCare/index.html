@@ -33,7 +33,7 @@
                     <li ng-show="model.isAuthenticated"><a href="/#/Home">Начало</a></li>
                     <li ng-hide="model.isAuthenticated"><a href="/#/Account/Login">Вход</a></li>
                     <li ng-hide="model.isAuthenticated"><a href="/#/Account/Register">Регистрация</a></li>
-                    <li ng-show="model.isAuthenticated"><a href="/#/Account/LogOff">Изход</a></li>
+                    <li ng-show="model.isAuthenticated"><a ng-click="model.logout()">Изход</a></li>
                 </ul>
             </div>
         </nav>

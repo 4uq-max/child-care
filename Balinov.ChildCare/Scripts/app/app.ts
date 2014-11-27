@@ -2,6 +2,9 @@
 // Config routes
     .config(($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
+            .when('/Home', {
+                templateUrl: '/scripts/app/views/Content.html'
+            })
             .when('/Alarm/List', {
                 templateUrl: '/scripts/app/views/Alarm/List.html',
                 controller: 'AlarmListController'
@@ -49,6 +52,9 @@
             .when('/UserDevice/History/:id', {
                 templateUrl: '/scripts/app/views/UserDevice/History.html',
                 controller: 'UserDeviceHistoryController'
+            })
+            .otherwise({
+                redirectTo: '/Home'
             });
     })
     .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {

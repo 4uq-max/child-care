@@ -1,28 +1,8 @@
 ﻿<div class="col-md-2 nav-col">
-    <ul class="hidden-sm hidden-xs">
-        <!-- TODO -->
-        <li><a href="/#/Notifications">Известия</a></li>
-        <li><a href="/#/UserDevice/List">Устройства</a></li>
-        <li><a href="/#/Alarm/List">Аларми</a></li>
-        <li><a href="/#/Geofences">Зони</a></li>
-        <li><a href="/#/GeofenceGroups">Групи зони</a></li>
-    </ul>
-    <ul class="visible-sm visible-xs inline-block-list">
-        <!-- TODO -->
-        <li><a href="/#/Notifications">Известия</a></li>
-        <li><a href="/#/UserDevice/List">Устройства</a></li>
-        <li><a href="/#/Alarm/List">Аларми</a></li>
-        <li><a href="/#/Geofences">Зони</a></li>
-        <li><a href="/#/GeofenceGroups">Групи зони</a></li>
-    </ul>
+    <ul class="hidden-sm hidden-xs" ng-include="'./Scripts/app/views/Menu.html'"></ul>
+    <ul class="visible-sm visible-xs inline-block-list" ng-include="'./Scripts/app/views/Menu.html'"></ul>
 </div>
-<div class="col-md-5 col-sm-6 data-col" ng-view>
-    <p>
-        От <a href="Content/Static/ChildCare.zip" target="_blank"><b>тук</b></a> можете
-        да свалите мобилното приложение, което да инсталирате на вашето устройство
-        и на устройството на вашето дете.
-    </p>
-</div>
+<div class="col-md-5 col-sm-6 data-col" ng-view></div>
 <div class="col-md-5 col-sm-6">
     <div id="map" style="width: 100%; height: 400px;"></div>
 </div>

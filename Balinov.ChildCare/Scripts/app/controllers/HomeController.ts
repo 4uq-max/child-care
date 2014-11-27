@@ -23,15 +23,15 @@ module App.Controllers {
                     }, 500);
                 });
         }
+
+        logout() {
+            this.dataService.logout()
+                .then((isLoggedOff: boolean) => {
+                    if (isLoggedOff) {
+                        this.isAuthenticated = false;
+                        //this.route("Account/Login");
+                    }
+                });
+        }
     }
 }
-
-//routie('/Account/LogOff', () => {
-//    $http.post('api/account/logout')
-//    .then((isLoggedOff: boolean) => {
-//        if (isLoggedOff) {
-//            this.route("Account/Login");
-//            this.app.getViewModel('Account').IsAuthenticated(false);
-//        }
-//    });
-//});

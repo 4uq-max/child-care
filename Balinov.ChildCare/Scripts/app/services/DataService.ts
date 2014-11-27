@@ -291,6 +291,14 @@ module App.Services {
             return defer.promise;
         }
 
+        logout() {
+            var defer = this.$q.defer<any>();
+            this.$http.post('api/account/logout', {})
+                .success(data => defer.resolve(data))
+                .error(error => defer.reject(error));
+            return defer.promise;
+        }
+
         register(data) {
             var defer = this.$q.defer();
             var promise = this.$http.post('api/account/register', data)

@@ -160,7 +160,9 @@
     <Content Include="Scripts\app\views\Account.html" />
     <Content Include="Scripts\app\views\Alarm\Edit.html" />
     <Content Include="Scripts\app\views\Alarm\List.html" />
+    <Content Include="Scripts\app\views\Content.html" />
     <Content Include="Scripts\app\views\Error.html" />
+    <Content Include="Scripts\app\views\Menu.html" />
     <Content Include="Scripts\app\views\Notification\List.html" />
     <Content Include="Scripts\app\views\UserDevice\History.html" />
     <Content Include="Scripts\app\views\UserDevice\Edit.html" />

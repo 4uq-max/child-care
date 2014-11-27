@@ -17,10 +17,7 @@ module App.Controllers {
             console.log('parent scope:', parent, parent.IsAuthenticated);
             this.dataService.login(this.login)
                 .then(() => {
-                    console.log('login');
-                    // declare app;
-                    //app.route('Home');
-                    // this.dataService.IsAuthenticated = true;
+                    window.location.href = '/';
                 },
                 (errors) => { this.errors = errors; });
         }

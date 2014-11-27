@@ -273,6 +273,7 @@ module App.Services {
                 .error((error) => difer.reject(error));
             return difer.promise;
         }
+        private isLogged = false;
 
         isAuthenticated() {
             var defer = this.$q.defer<any>();
@@ -285,7 +286,7 @@ module App.Services {
         login(data) {
             var defer = this.$q.defer();
 
-            var promise = this.$http.post('api/account/login', data)
+            this.$http.post('api/account/login', data)
                 .success(() => defer.resolve())
                 .error((errors: any) => defer.reject(errors));
             return defer.promise;

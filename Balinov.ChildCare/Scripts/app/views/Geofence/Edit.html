@@ -19,7 +19,8 @@
         <select name="Type" class="form-control"
                 ng-model="model.geofence.Type"
                 ng-init="model.geofence.Type = 'None'"
-                ng-change="model.onChange()">
+                ng-change="model.onChange()"
+                ng-focus="model.onFocus()">
             <option value="None">Изберете тип зона</option>
             <option value="Circle">Окръжност</option>
             <option value="Strip">Ивица</option>

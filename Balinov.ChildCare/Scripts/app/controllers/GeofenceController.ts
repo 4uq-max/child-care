@@ -8,6 +8,7 @@ module App.Controllers {
         private groups: GeofenceGroup[];
         private drawingMode = false;
         private isEdit = false;
+        private oldType;
 
         constructor($scope: IScope<GeofenceController>,
             private $routeParams: ng.route.IRouteParamsService,
@@ -70,7 +71,11 @@ module App.Controllers {
             this.mapService.activateDrawing(this.geofence.Type);
         }
 
-        onChange(a, b) {
+        onFocus() {
+            this.oldType = this.geofence.Type;
+        }
+        
+        onChange() {
             if (!this.drawingMode) {
                 return;
             }
@@ -82,38 +87,9 @@ module App.Controllers {
                     this.mapService.deactivateDrawing();
                     this.draw();
                 }, () => {
-                    //this.typeScubsciption.dispose();
-                    //this.geofence.Type = this.oldType;
-                    //this.typeScubsciption = this.Type.subscribe(this.onChange);
+                    this.geofence.Type = this.oldType;
                 });
-            
-            
-            
         }
-
-        private oldType;
-        private typeScubsciption;
-        /*
-        constructor(item?) {
-            this.Type.subscribe((oldType) => { this.oldType = oldType; }, null, 'beforeChange');
-            this.typeScubsciption = this.Type.subscribe(this.onChange);
-        }
-
-        onChange = (newType) => {
-            if (!this.drawingMode || this.oldType == newType) return;
-
-            Dialog.confirm('Сигурни ли сте, че искате да промените типа на зоната? ' +
-                'Изчертаните до сега обекти върху картата ще бъдат изтрити.')
-                .then(() => {
-                    this.mapService.deactivateDrawing();
-                    this.draw();
-                }, () => {
-                    this.typeScubsciption.dispose();
-                    this.Type(this.oldType);
-                    this.typeScubsciption = this.Type.subscribe(this.onChange);
-                });
-        };
-        */
 
         list() {
             this.mapService.deactivateDrawing();

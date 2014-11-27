@@ -28,8 +28,7 @@ module App.Controllers {
             this.dataService.logout()
                 .then((isLoggedOff: boolean) => {
                     if (isLoggedOff) {
-                        this.isAuthenticated = false;
-                        //this.route("Account/Login");
+                        window.location.href = '/';
                     }
                 });
         }

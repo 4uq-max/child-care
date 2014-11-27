@@ -57,8 +57,8 @@ module App.Controllers {
             this.geofence.GeoJSON = geoJsonFormat.writeGeometry(new ol.geom.GeometryCollection(clonedGeometries));
 
             this.dataService.saveGeofence(this.geofence)
-                .then(() => { this.$location.path('/Geofences'); },
-                (errors) => { this.errors = errors; });
+                .then(() => this.list(),
+                errors => this.errors = errors);
         }
 
         draw = () => {

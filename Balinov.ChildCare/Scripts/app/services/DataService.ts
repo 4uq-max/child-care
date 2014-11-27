@@ -108,7 +108,14 @@ module App.Services {
 
         deleteGeofence(id: number) {
             return this.deleteItem('api/geofence/' + id)
-                .then(() => this.removeItem(this.geofences, id));
+                .then(() => {
+                    var geofence = this.getGeofence(id);
+                    if (geofence.Feature) {
+                        this.mapService.removeFeature(geofence.Feature);
+                    }
+
+                    this.removeItem(this.geofences, id)
+                });
         }
 
         deleteGeofenceGroup(id: number) {
@@ -238,7 +245,6 @@ module App.Services {
                     })
                     .error((error) => difer.reject(error));
             } else {
-
                 this.$http.put<Geofence>('api/geofence' + item.Id, item)
                     .success((geofence) => {
                         for (var i = 0; i < this.alarms.length; i++) {

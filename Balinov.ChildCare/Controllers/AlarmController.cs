@@ -40,8 +40,6 @@
 
         public HttpResponseMessage Post(Alarm alarm)
         {
-            this.VlidateAlarm(alarm);
-
             if (!ModelState.IsValid)
             {
                 return this.ModelStateResult();
@@ -66,7 +64,6 @@
 
         public HttpResponseMessage Put(Alarm alarm, int id)
         {
-            this.VlidateAlarm(alarm);
             if (!ModelState.IsValid)
             {
                 return this.ModelStateResult();
@@ -96,25 +93,6 @@
             }
 
             return Request.CreateResponse(HttpStatusCode.NotFound);
-        }
-
-        private void VlidateAlarm(Alarm alarm)
-        {
-            if (alarm.GeofenceId == 0)
-            {
-                ModelState.AddModelError(
-                    "alarm.GeofenceId",
-                    string.Format(DataAnnotations.RequiredAttribute_ValidationError, DisplayResources.Geofence));
-            }
-
-            if (alarm.DeviceId == 0)
-            {
-                ModelState.AddModelError(
-                    "alarm.DeviceId",
-                    string.Format(DataAnnotations.RequiredAttribute_ValidationError, DisplayResources.Device));
-            }
-
-            ModelState.Remove("alarm");
         }
 
         public class AlarmDTO

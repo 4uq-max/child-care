@@ -301,16 +301,14 @@
     <TypeScriptCompile Include="Scripts\app\models\Notification.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Register.d.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DataService.ts" />
-    <TypeScriptCompile Include="Scripts\app\services\GpsPlayerService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MapService.ts" />
     <TypeScriptCompile Include="Scripts\app\services\MessageService.ts" />
     <TypeScriptCompile Include="Scripts\app\app.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewmodels\LocationPlayerViewModel.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.blockUI.d.ts" />
-    <TypeScriptCompile Include="Scripts\libs\typings\jqueryui.d.ts" />
     <TypeScriptCompile Include="Scripts\libs\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\libs\typings\jqueryui.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Balinov.ChildCare.Data\Balinov.ChildCare.Data.csproj">

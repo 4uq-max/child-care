@@ -65,6 +65,10 @@
             return this.layers[name];
         }
 
+        getMap = () => {
+            return this.map;
+        }
+
         /*
         if (navigator.geolocation) {
             var showPosition = function (position) {

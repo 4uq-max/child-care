@@ -3,11 +3,12 @@ module App.Controllers {
     export class UserDeviceHistoryController extends BaseController {
         private history: History;
         private errors: string[];
+        private data: any;
 
         constructor($scope: IScope<UserDeviceHistoryController>,
             private $routeParams: ng.route.IRouteParamsService,
             private dataService: Services.DataService,
-            private $compile: any) {
+            private $compile: ng.ICompileService) {
             super($scope);
 
             this.history = {
@@ -23,9 +24,11 @@ module App.Controllers {
 
             this.dataService.getHistory(this.history.DeviceId, timestamp)
                 .then(data => {
-                    var dialog = this.$compile('<div id="player-container" location-player></div>')(this.$scope);
+                    var scope: any = this.$scope;
+                    scope.data = data;
+                    var dialog = this.$compile('<div id="player-container" location-player></div>')(scope);
+                    scope.dialog = dialog;
                     $('body').append(dialog);
-                    //data
                 },
                 errors => this.errors = errors);
         }

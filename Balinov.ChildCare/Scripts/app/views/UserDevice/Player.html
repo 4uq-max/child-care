@@ -2,16 +2,17 @@
     <div id="player-map"></div>
     <div id="player-back">
         <a class="icon icon-back dark"
-           ng-click="model.list"></a>
+           ng-click="remove()"></a>
     </div>
     <div id="player-info">
-        <div>Дейност: {{ model.locationPlayer.CurrentActivity }} ({{ model.locationPlayer.CurrentActivityConfidence }}%)</div>
+        <div>Дейност: {{ locationPlayer.CurrentActivity }} ({{ locationPlayer.CurrentActivityConfidence }}%)</div>
     </div>
     <div id="player-toolbar">
-        <a class="icon icon-pause dark" ng-click="play()" data-bind="css: { 'icon-play': $root.Paused }"></a>
-        <a class="icon icon-stop dark" ng-click="model.stop()"></a>
-        <span class="player-time-label">{{ model.locationPlayer.CurrentTimeText }}</span>
+        <a class="icon icon-pause dark" ng-click="play()"
+           ng-class="locationPlayer.Paused ? 'icon-play' : ''"></a>
+        <a class="icon icon-stop dark" ng-click="stop()"></a>
+        <span class="player-time-label">{{ locationPlayer.CurrentTimeText }}</span>
         <span id="progress-bar"></span>
-        <span class="player-time-label">{{ model.locationPlayer.EndTimeText }}</span>
+        <span class="player-time-label">{{ locationPlayer.EndTimeText }}</span>
     </div>
 </div>

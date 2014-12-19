@@ -80,7 +80,6 @@
     .factory('dataService', ['$http', '$q', 'messageService', 'mapService',
         ($http, $q, messageService, mapService) => new App.Services.DataService($http, $q, messageService, mapService)])
     .factory('mapService', [() => new App.Services.MapService()])
-    .factory('gpsPlayerService', ['mapService', (mapService) => new App.Services.GpsPlayerService(mapService)])
     .run(($rootScope: ng.IRootScopeService) => {
         // Prevent two request at the same time by blocking the screen.
         $rootScope.$on('cfpLoadingBar:started', (evt, e, ee) => {

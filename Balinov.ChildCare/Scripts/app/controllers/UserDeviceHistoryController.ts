@@ -7,7 +7,7 @@ module App.Controllers {
         constructor($scope: IScope<UserDeviceHistoryController>,
             private $routeParams: ng.route.IRouteParamsService,
             private dataService: Services.DataService,
-            private gpsPlayerService: Services.GpsPlayerService) {
+            private $compile: any) {
             super($scope);
 
             this.history = {
@@ -22,7 +22,11 @@ module App.Controllers {
             var timestamp = ~~(date.getTime() / 1000);
 
             this.dataService.getHistory(this.history.DeviceId, timestamp)
-                .then(data => this.gpsPlayerService.show(data),
+                .then(data => {
+                    var dialog = this.$compile('<div id="player-container" location-player></div>')(this.$scope);
+                    $('body').append(dialog);
+                    //data
+                },
                 errors => this.errors = errors);
         }
     }

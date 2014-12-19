@@ -290,6 +290,7 @@
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceHistoryController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\UserDeviceListController.ts" />
     <TypeScriptCompile Include="Scripts\app\directives\DatePicker.ts" />
+    <TypeScriptCompile Include="Scripts\app\directives\LocationPlayer.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Alarm.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Device.d.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Geofence.d.ts" />

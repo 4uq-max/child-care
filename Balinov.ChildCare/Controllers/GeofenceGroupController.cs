@@ -5,8 +5,11 @@
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Balinov.ChildCare.Data;
     using Balinov.ChildCare.Data.Abstract;
+    using Balinov.ChildCare.Models;
     
     [Authorize]
     public class GeofenceGroupController : BaseApiController
@@ -18,41 +21,46 @@
             this.repository = repository;
         }
 
-        public IEnumerable<GeofenceGroup> Get()
+        public IEnumerable<GeofenceGroupModel> Get()
         {
             return this.repository.GetAll()
-               .Where(item => item.User == null || item.User.Id == CurrentUser.Id);
+               .Where(item => item.User == null || item.User.Id == CurrentUser.Id)
+               .Project()
+               .To<GeofenceGroupModel>();
         }
 
-        public HttpResponseMessage Post(GeofenceGroup geofenceGroup)
+        public HttpResponseMessage Post(GeofenceGroupModel geofenceGroup)
         {
             if (!ModelState.IsValid)
             {
                 return this.ModelStateResult();
             }
 
-            geofenceGroup.UserId = CurrentUser.Id;
-            this.repository.Save(geofenceGroup);
-            return Request.CreateResponse(HttpStatusCode.Created, geofenceGroup);
+            GeofenceGroup item = Mapper.Map<GeofenceGroup>(geofenceGroup);
+            item.UserId = CurrentUser.Id;
+            this.repository.Save(item);
+            return Request.CreateResponse(
+                HttpStatusCode.Created, Mapper.Map<GeofenceGroupModel>(item));
         }
 
-        public HttpResponseMessage Put(GeofenceGroup geofenceGroup, int id)
+        public HttpResponseMessage Put(GeofenceGroupModel geofenceGroup, int id)
         {
             if (!ModelState.IsValid)
             {
                 return this.ModelStateResult();
             }
 
-            GeofenceGroup group = this.repository.GetById(id);
-            if (group == null || group.User.Id != CurrentUser.Id)
+            GeofenceGroup item = this.repository.GetById(id);
+            if (item == null || item.User == null || item.User.Id != CurrentUser.Id)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
-            group.Name = geofenceGroup.Name;
-            this.repository.Save(group);
+            item.Name = geofenceGroup.Name;
+            this.repository.Save(item);
 
-            return Request.CreateResponse(HttpStatusCode.Accepted, group);
+            return Request.CreateResponse(
+                HttpStatusCode.Accepted, Mapper.Map<GeofenceGroupModel>(item));
         }
 
         public HttpResponseMessage Delete(int id)

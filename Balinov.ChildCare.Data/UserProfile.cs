@@ -6,7 +6,7 @@
     using Resources;
 
     [Table("Users")]
-    public class UserProfile : BaseItem
+    public class UserProfile : BaseItem<UserProfile>
     {
         [Required]
         [MaxLength(100)]

@@ -5,9 +5,9 @@
     using Balinov.ChildCare.Data.Abstract;
 
     internal class DbRepository<T> : BaseDbRepository<T>, IRepository<T>
-        where T : BaseItem
+        where T : BaseItem<T>
     {
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             return this.context.Items;
         }

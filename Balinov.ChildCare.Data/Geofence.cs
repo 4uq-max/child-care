@@ -8,8 +8,7 @@
     using Newtonsoft.Json.Linq;
     using Resources;
     
-    [Table("Geofences")]
-    public class Geofence : BaseItem
+    public class Geofence : BaseItem<Geofence>
     {
         public Geofence()
         {

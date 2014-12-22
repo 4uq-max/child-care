@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Activities")]
-    public class Activity : DeviceItem
+    public class Activity : DeviceItem<Activity>
     {
         [Required]
         public ActivityType Type { get; set; }

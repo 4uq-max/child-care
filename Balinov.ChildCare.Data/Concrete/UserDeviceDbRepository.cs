@@ -6,7 +6,7 @@
 
     internal class UserDeviceDbRepository : BaseDbRepository<UserDevice>, ITwoKeyRepository<UserDevice>
     {
-        public IEnumerable<UserDevice> GetAll()
+        public IQueryable<UserDevice> GetAll()
         {
             return this.context.Items;
         }

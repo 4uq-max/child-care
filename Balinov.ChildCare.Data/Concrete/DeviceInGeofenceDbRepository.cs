@@ -6,7 +6,7 @@
 
     class DeviceInGeofenceDbRepository : BaseDbRepository<DeviceInGeofence>, ITwoKeyRepository<DeviceInGeofence>
     {
-        public IEnumerable<DeviceInGeofence> GetAll()
+        public IQueryable<DeviceInGeofence> GetAll()
         {
             return this.context.Items;
         }

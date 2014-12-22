@@ -5,7 +5,8 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Newtonsoft.Json;
 
-    public abstract class DeviceItem : BaseItem
+    public abstract class DeviceItem<T> : BaseItem<T>
+        where T: DeviceItem<T>
     {
         private int timestamp;
 

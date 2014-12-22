@@ -1,9 +1,7 @@
 ﻿/*namespace Balinov.ChildCare.Data
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Accelerations")]
     public class Acceleration : DeviceItem
     {
         [Required]

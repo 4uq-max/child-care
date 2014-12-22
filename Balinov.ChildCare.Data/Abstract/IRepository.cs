@@ -1,10 +1,11 @@
 ﻿namespace Balinov.ChildCare.Data.Abstract
 {
+    using System.Linq;
     using System.Collections.Generic;
 
     public interface IRepository<TEntity>
     {
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
 
         TEntity GetById(int id);
 

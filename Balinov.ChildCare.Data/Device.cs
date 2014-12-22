@@ -6,7 +6,7 @@
     using Newtonsoft.Json;
 
     [Table("Devices")]
-    public class Device : BaseItem
+    public class Device : BaseItem<Device>
     {
         public Device() : base()
         {

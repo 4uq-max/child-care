@@ -1,10 +1,11 @@
 ﻿namespace Balinov.ChildCare.Data.Abstract
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public interface ITwoKeyRepository<TEntity>
     {
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
 
         TEntity GetByIds(int key1, int key2);
 

@@ -4,6 +4,8 @@
     using System.Reflection;
     using System.Web;
     using System.Web.Http;
+    
+    using Balinov.ChildCare.Infrastructure.Mapping;
 
     public class WebApiApplication : HttpApplication
     {
@@ -12,6 +14,7 @@
             this.GlobalizeResources();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AuthConfig.RegisterAuth();
+            AutoMapperConfig.Execute();
         }
 
         private void GlobalizeResources() 

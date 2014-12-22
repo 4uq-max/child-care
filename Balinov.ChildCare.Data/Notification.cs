@@ -5,8 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Newtonsoft.Json;
 
-    [Table("Notifications")]
-    public class Notification : BaseItem
+    public class Notification : BaseItem<Notification>
     {
         [Required]
         [MaxLength(150)]

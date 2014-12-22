@@ -1,10 +1,8 @@
 ﻿namespace Balinov.ChildCare.Data
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Positions")]
-    public class Position : DeviceItem
+    public class Position : DeviceItem<Position>
     {
         [Required]
         public double Longitude { get; set; }

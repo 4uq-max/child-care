@@ -2,10 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Balinov.ChildCare.Data;
     using Newtonsoft.Json;
 
-    [Table("UserDevices")]
     public class UserDevice
     {
         [Required]

@@ -1,10 +1,8 @@
 ﻿/*namespace Balinov.ChildCare.Data
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("CompassHeadings")]
-    public class CompassHeading : DeviceItem
+    public class CompassHeading : DeviceItem<CompassHeading>
     {
         [Required]
         [Range(0, 360d)]

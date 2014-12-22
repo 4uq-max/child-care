@@ -2,10 +2,8 @@
 {   
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using Newtonsoft.Json;
 
-    [Table("Devices")]
     public class Device : BaseItem<Device>
     {
         public Device() : base()

@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Acceleration : DeviceItem
+    public class Acceleration : DeviceItem<Acceleration>
     {
         [Required]
         public double X { get; set; }

@@ -1,10 +1,9 @@
 ﻿/*namespace Balinov.ChildCare.Data
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("BatteryStatuses")]
-    public class BatteryStatus : DeviceItem
+    //[Table("BatteryStatuses")]
+    public class BatteryStatus : DeviceItem<BatteryStatus>
     {
         [Required]
         [Range(0, 100)]

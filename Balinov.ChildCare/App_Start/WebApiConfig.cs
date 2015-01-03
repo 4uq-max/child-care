@@ -12,6 +12,8 @@
             DependencyConfig.RegisterTypes(container);
             config.DependencyResolver = new UnityDependencyResolver(container);
 
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
+            
             // Web API configuration and services
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
@@ -22,6 +24,8 @@
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional });
+
+            //config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }
